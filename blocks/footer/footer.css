@@ -3,3 +3,10 @@
     margin: 0 auto;
     margin-bottom: 60px;
 }
+
+@media all and (max-width: 320px) {
+    .footer {
+        max-width: 282px;
+        margin-bottom: 36px;
+    }
+}

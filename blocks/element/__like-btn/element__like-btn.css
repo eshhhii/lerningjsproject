@@ -6,13 +6,17 @@
     background-repeat: no-repeat;
     padding: 0;
     background-color: transparent;
+    cursor: pointer;
+
 }
 
 .element__like-btn:hover{
     opacity: 0.5;
     transition: linear 0.3s;
-    cursor: pointer;
 }
-.element__like-btn:active{
-    background-color:  #000000;
+
+.element__like-btn:focus{
+   outline: none;
+   background-color: #000000;
 }
+

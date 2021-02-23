@@ -4,3 +4,10 @@
     align-items: center;
     padding-bottom: 16px;
 }
+
+@media all and (max-width: 320px) {
+    .profile__username {
+        max-width: 282px;
+        padding-bottom: 14px;
+}
+}

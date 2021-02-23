@@ -5,3 +5,12 @@
     padding-right: 18px;
     margin: 0;
 }
+
+@media all and (max-width: 320px) {
+    .profile__title {
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 33px;
+        padding-right: 10px;
+    }
+}
