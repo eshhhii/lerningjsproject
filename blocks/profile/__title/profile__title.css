@@ -8,7 +8,6 @@
 
 @media all and (max-width: 586px) {
     .profile__title {
-        font-weight: 500;
         font-size: 27px;
         line-height: 33px;
         padding-right: 10px;

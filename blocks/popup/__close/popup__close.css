@@ -1,4 +1,4 @@
-.popup__close-btn{
+.popup__close{
     background-image: url(../../../images/Close\ Icon.svg);
     min-width: 40px;
     height: 40px;
@@ -13,16 +13,16 @@
     right: -40px;
     cursor: pointer;
 }
-.popup__close-btn:hover{
+.popup__close:hover{
     opacity: 0.6;
     transition: 0.3s;
 }
-.popup__close-btn:focus{
+.popup__close:focus{
     outline: none;
 }
 
 @media all and (max-width: 586px) {
-    .popup__close-btn{
+    .popup__close{
         min-width: 26px;
         height: 26px;
         top: - 35px;

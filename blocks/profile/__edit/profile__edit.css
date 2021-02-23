@@ -1,4 +1,4 @@
-.profile__edit-btn{
+.profile__edit{
     background-image: url(../../../images/Edit\ Button.svg);
     min-width: 24px;
     height: 24px;
@@ -9,13 +9,13 @@
     cursor: pointer;
 }
 
-.profile__edit-btn:hover{
+.profile__edit:hover{
     opacity: 0.6;
     transition: 0.3s;
 }
 
 @media all and (max-width: 320px) {
-    .profile__edit-btn {
+    .profile__edit {
         min-width: 18px;
         height: 18px;
 }
