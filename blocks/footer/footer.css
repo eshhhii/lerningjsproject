@@ -4,7 +4,14 @@
     margin-bottom: 60px;
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 936px) {
+    .footer {
+        max-width: 680px;
+        margin-bottom: 48px;
+    }
+}
+
+@media all and (max-width: 586px) {
     .footer {
         max-width: 282px;
         margin-bottom: 36px;

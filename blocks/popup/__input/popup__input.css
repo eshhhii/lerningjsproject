@@ -11,9 +11,11 @@
     font-size: 14px;
     line-height: 17px;
     cursor: pointer;
+    padding: 0;
 }
+
 .popup__input:last-child{
-    margin-bottom: 48px;
+    margin-bottom: 0;
 }
 
 .popup__input:focus{
@@ -21,10 +23,8 @@
 }
 
 
-@media all and (max-width: 320px) {
-    .popup__inpute {
-        max-width: 282px;
-        height: 14px;
+@media all and (max-width: 586px) {
+    .popup__input{
+        width: 238px;
     }
 }
-    

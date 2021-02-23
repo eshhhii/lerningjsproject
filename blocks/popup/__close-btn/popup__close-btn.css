@@ -2,7 +2,7 @@
     background-image: url(../../../images/Close\ Icon.svg);
     min-width: 40px;
     height: 40px;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
     border: none;
@@ -19,4 +19,13 @@
 }
 .popup__close-btn:focus{
     outline: none;
+}
+
+@media all and (max-width: 586px) {
+    .popup__close-btn{
+        min-width: 26px;
+        height: 26px;
+        top: - 35px;
+        right: -5px;
+    }
 }

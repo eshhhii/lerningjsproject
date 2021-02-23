@@ -14,3 +14,12 @@
    opacity: 0.8;
    transition: 0.3s;
 }
+
+@media all and (max-width: 586px) {
+    .popup__save-btn{
+        width: 238px;
+        height: 46px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

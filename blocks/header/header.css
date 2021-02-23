@@ -7,7 +7,13 @@
     border-bottom: 1px solid #545454;
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 936px) {
+    .header {
+        max-width: 750px;
+    }
+}
+
+@media all and (max-width: 586px) {
     .header {
         max-width: 100%;
         padding-top: 28px;
