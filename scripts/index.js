@@ -23,7 +23,7 @@ function closePopup() {
 showPopupButton.addEventListener("click", showPopup);
 closePopupButton.addEventListener("click", closePopup);
 
-let formElement = document.querySelector(".popup__fieldset");
+let formElement = document.querySelector(".popup__container");
 
 function formSubmitHandler(evt) {
     evt.preventDefault();

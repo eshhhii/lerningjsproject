@@ -16,7 +16,7 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__info">
-                    <img src="./images/image (1).jpg" class="profile__avatar" alt="Аватар">
+                    <img src="./images/image.jpg" class="profile__avatar" alt="Аватар">
                     <div class="profile__text">
                         <div class="profile__user">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -28,48 +28,50 @@
                 <button type="button" class="profile__add" aria-label="Добавить"></button>
             </section>
             <section class="elements">
-                <article class="element">
-                    <img src="./images/kirill-pershin-1088404-unsplash (1).jpg" class="element__image" alt="">
+                <ul class="elements__list">
+                <li class="element">
+                    <img src="./images/kirill-pershin-1088404-unsplash.jpg" class="element__image" alt="Храм">
                     <div class="element__text">
                         <h2 class="element__title">Карачаевск</h2>
                         <button class="element__like" aria-label="Лайкнуть"> </button>
                     </div>
-                </article>
-                <article class="element">
-                    <img src="./images/kirill-pershin-1404681-unsplash (1).png" class="element__image" alt="">
+                </li>
+                <li class="element">
+                    <img src="./images/kirill-pershin-1404681-unsplash.png" class="element__image" alt="Пустыня и горы">
                     <div class="element__text">
                         <h2 class="element__title">Гора Эльбрус</h2>
                         <button class="element__like" aria-label="Лайкнуть"> </button>
                     </div>
-                </article>
-                <article class="element">
-                    <img src="./images/kirill-pershin-1556355-unsplash (1).png" class="element__image" alt="">
+                </li>
+                <li class="element">
+                    <img src="./images/kirill-pershin-1556355-unsplash.png" class="element__image" alt="Горы и лес">
                     <div class="element__text">
                         <h2 class="element__title">Домбай</h2>
                         <button class="element__like" aria-label="Лайкнуть"> </button>
                     </div>
-                </article>
-                <article class="element">
-                    <img src="./images/roman-trifonov-vXFaLLG4qY8-unsplash (1).jpg" class="element__image" alt="">
+                </li>
+                <li class="element">
+                    <img src="./images/roman-trifonov-vXFaLLG4qY8-unsplash.jpg" class="element__image" alt="Море">
                     <div class="element__text">
                         <h2 class="element__title">Калининград</h2>
                         <button class="element__like" aria-label="Лайкнуть"> </button>
                     </div>
-                </article>
-                <article class="element">
-                    <img src="./images/philipp-trubchenko-08lvM7w-G30-unsplash (1).png" class="element__image" alt="">
+                </li>
+                <li class="element">
+                    <img src="./images/philipp-trubchenko-08lvM7w-G30-unsplash.png" class="element__image" alt="Зимний байкал">
                     <div class="element__text">
                         <h2 class="element__title">Байкал</h2>
                         <button class="element__like" aria-label="Лайкнуть"> </button>
                     </div>
-                </article>
-                <article class="element">
-                    <img src="./images/denis-kostyuck-b94-EgA1D8k-unsplash.png" class="element__image" alt="">
+                </li>
+                <li class="element">
+                    <img src="./images/denis-kostyuck-b94-EgA1D8k-unsplash.png" class="element__image" alt="Зимний Сахалин">
                     <div class="element__text">
                         <h2 class="element__title">Сахалин</h2>
                         <button class="element__like" aria-label="Лайкнуть"> </button>
                     </div>
-                </article>
+                    </li>
+                </ul>
             </section>
         </main>
         <footer class="footer">
@@ -77,15 +79,15 @@
         </footer>
     </div>
     <section class="popup">
-        <div class="popup__container">
+        <form class="popup__container">
             <button type="button" class="popup__close" aria-label="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__fieldset">
+            <fieldset class="popup__fieldset">
                 <input class="popup__input" id="username" type="text" value="Жак-Ив Кусто" placeholder="Имя">
                 <input class="popup__input" id="userjob" type="text" value="Исследователь океана" placeholder="О себе">
-                <button type="submit" class="popup__save">Сохранить</button>
-            </form>
-        </div>
+            </fieldset>
+            <button type="submit" class="popup__save">Сохранить</button>
+        </form>
     </section>
     <script src="scripts/index.js"></script>
 </body>
