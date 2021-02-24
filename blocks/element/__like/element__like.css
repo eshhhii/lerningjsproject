@@ -1,6 +1,6 @@
 .element__like {
     background-image: url(../../../images/heart.svg);
-    width: 22px;
+    min-width: 22px;
     height: 19px;
     border: none;
     background-repeat: no-repeat;
