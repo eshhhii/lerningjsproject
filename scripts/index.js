@@ -5,7 +5,7 @@ let userName = document.querySelector(".profile__name");
 let userJob = document.querySelector(".profile__job");
 let nameInput = document.querySelector("#username");
 let jobInput = document.querySelector("#userjob");
-let formElement = document.querySelector(".popup__container");
+let formElement = document.querySelector(".popup__form");
 
 function showPopup() {
 
