@@ -1,4 +1,4 @@
-.popup__fieldset{
+.popup__fieldset {
     border: none;
     color: #000000;
     font-weight: normal;
@@ -8,7 +8,7 @@
 }
 
 @media all and (max-width: 586px) {
-    .popup__fieldset{
+    .popup__fieldset {
         margin-bottom: 45px;
     }
 }

@@ -1,4 +1,4 @@
-.element__like{
+.element__like {
     background-image: url(../../../images/heart.svg);
     width: 22px;
     height: 19px;
@@ -7,16 +7,15 @@
     padding: 0;
     background-color: transparent;
     cursor: pointer;
-
 }
 
-.element__like:hover{
+.element__like:hover {
     opacity: 0.5;
     transition: linear 0.3s;
 }
 
-.element__like:focus{
-   outline: none;
-   background-color: #000000;
+.element__like:focus {
+    outline: none;
+    background-color: #000000;
 }
 
