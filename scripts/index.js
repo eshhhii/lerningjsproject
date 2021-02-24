@@ -8,10 +8,9 @@ let jobInput = document.querySelector("#userjob");
 let formElement = document.querySelector(".popup__form");
 
 function showPopup() {
-
     if (popup.classList.contains("popup_opened")) {
         nameInput.value = userName.textContent;
-    jobInput.value = userJob.textContent;
+        jobInput.value = userJob.textContent;
     }
     popup.classList.add("popup_opened");
 }
@@ -19,7 +18,6 @@ function showPopup() {
 function closePopup() {
     popup.classList.remove("popup_opened");
 }
-
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
