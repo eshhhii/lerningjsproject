@@ -6,6 +6,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
 
 @media all and (max-width: 320px) {
     .profile__job {
