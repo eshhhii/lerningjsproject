@@ -13,5 +13,9 @@
     opacity: 0.5;
     transition: linear 0.3s;
 }
+.element__like:active {
+    outline: none;
+}
+
 
 
