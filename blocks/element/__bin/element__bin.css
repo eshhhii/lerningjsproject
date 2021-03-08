@@ -2,12 +2,26 @@
     background-image: url(../../../images/bin.svg);
     width: 18px;
     height: 19.3px;
-    position: relative;
+    position: absolute;
     border: none;
     background-repeat: no-repeat;
     padding: 0;
     background-color: transparent;
     cursor: pointer;
-    left: 88%;
-    bottom: 68%;
+    top: 18px;
+    right: 20px;
+/*
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    height: 18px;
+    width: 19.3px;
+    background-image: url(../../../../images/delete.svg);
+    
+    cursor: pointer;*/
+}
+
+.element__bin:hover {
+    opacity: 0.6;
+    transition: linear 0.3s;
 }

@@ -1,4 +1,6 @@
-let popup = ['.popup popup_edit', '.popup popup_add', '.popup popup_image'];
+const popup = document.querySelector(".popup");
+const popupAdd = document.querySelector('.popup_add');
+const popupImage = document.querySelector('.popup_image')
 let showPopupButton = document.querySelector(".profile__edit");
 let closePopupButton = document.querySelector(".popup__close");
 let Username = document.querySelector(".profile__name");
@@ -39,6 +41,8 @@ function formSubmitHandler(evt) {
 
 formElement.addEventListener("submit", formSubmitHandler);
 
+
+
 function createNewCard(element) {
 const newCard = templateElement.content.cloneNode(true);
 const titleCard = newCard.querySelector('.element__title');
@@ -54,6 +58,7 @@ function renderList() {
 
     container.append(...result);
 }
+
 
 function addCardFormListener(evt) {
   evt.preventDefault();
@@ -75,3 +80,4 @@ function addCardFormListener(evt) {
 
 renderList();
 addCard.addEventListener('submit', addCardFormListener);
+
