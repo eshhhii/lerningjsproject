@@ -55,8 +55,10 @@ const titleCard = newCard.querySelector('.element__title');
 const linkCard = newCard.querySelector('.element__image');
 titleCard.textContent = element.name;
 linkCard.src = element.link;
-
-
+/*const deleteButton = newCard.querySelector('.element__bin');
+deleteButton.addEventListener('click', function(){
+    deleteButton.addEventListener('click', //написать функцию удаления)
+})*/
 const likeButton = newCard.querySelector('.element__like');
 likeButton.addEventListener('click', function(){
     likeButton.classList.toggle('element__like_active')

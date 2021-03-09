@@ -7,15 +7,12 @@
     padding: 0;
     background-color: transparent;
     cursor: pointer;
+    outline: none;
 }
 
 .element__like:hover {
     opacity: 0.5;
     transition: linear 0.3s;
 }
-.element__like:active {
-    outline: none;
-}
-
 
 
