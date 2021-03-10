@@ -48,6 +48,9 @@ function closePopupAdd() {
 showPopupAddButton.addEventListener('click', openPopupAdd);
 closePopupAddButton.addEventListener('click', closePopupAdd);
 
+function deleteCard(evt) {
+    evt.target.closest('.element').remove();
+}
 
 function createNewCard(element) {
 const newCard = templateElement.content.cloneNode(true);
@@ -55,10 +58,8 @@ const titleCard = newCard.querySelector('.element__title');
 const linkCard = newCard.querySelector('.element__image');
 titleCard.textContent = element.name;
 linkCard.src = element.link;
-/*const deleteButton = newCard.querySelector('.element__bin');
-deleteButton.addEventListener('click', function(){
-    deleteButton.addEventListener('click', //написать функцию удаления)
-})*/
+const deleteButton = newCard.querySelector('.element__bin');
+deleteButton.addEventListener('click', deleteCard);
 const likeButton = newCard.querySelector('.element__like');
 likeButton.addEventListener('click', function(){
     likeButton.classList.toggle('element__like_active')
