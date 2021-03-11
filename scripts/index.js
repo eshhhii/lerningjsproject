@@ -29,21 +29,21 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 
 function openPopupEdit() {
-    popupEdit.classList.add('popup__opened');
+    popupEdit.classList.add('popup_opened');
 }
 function closePopupEdit() {
-    popupEdit.classList.remove('popup__opened');
+    popupEdit.classList.remove('popup_opened');
 }
 
 showPopupButton.addEventListener('click', openPopupEdit);
 closePopupButton.addEventListener('click', closePopupEdit);
 
 function openPopupAdd() {
-    popupAdd.classList.add('popup__opened');
+    popupAdd.classList.add('popup_opened');
 }
 
 function closePopupAdd() {
-    popupAdd.classList.remove('popup__opened');
+    popupAdd.classList.remove('popup_opened');
 }
 
 showPopupAddButton.addEventListener('click', openPopupAdd);
@@ -55,12 +55,11 @@ function openImagePopup(element) {
 
     popupImageName.textContent = element.name;
     popupImageCard.src = element.link;
-    popupImageCard.alt = element.name;
-    popupImage.classList.add('popup__opened');
+    popupImage.classList.add('popup_opened');
 }
 
 function closeImagePopup() {
-    popupImage.classList.remove('popup__opened');
+    popupImage.classList.remove('popup_opened');
 }
 
 function deleteCard(evt) {
@@ -113,3 +112,4 @@ function addCardFormListener(evt) {
 
 renderList();
 addCard.addEventListener('submit', addCardFormListener);
+
