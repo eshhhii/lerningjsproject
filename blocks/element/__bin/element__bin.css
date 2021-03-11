@@ -2,11 +2,13 @@
     background-image: url(../../../images/bin.svg);
     width: 18px;
     height: 19.3px;
-    position: relative;
-    bottom: 70%;
-    left: 90%;
+    position: absolute;
+    top: 18px;
+    right: 15px;
     border: none;
     background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
     padding: 0;
     background-color: transparent;
     cursor: pointer;

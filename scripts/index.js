@@ -1,11 +1,12 @@
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
+const popupImage = document.querySelector('.popup_images');
 const showPopupButton = document.querySelector(".profile__edit");
 const closePopupButton = document.querySelector(".popup__close");
 const showPopupAddButton = document.querySelector('.profile__add');
 const closePopupAddButton = popupAdd.querySelector('.popup__close');
-const popupImage = document.querySelector('.popup_image');
+const closeImagePopupButton = popupImage.querySelector('.popup__close');
 const Username = document.querySelector('.profile__name');
 const Userjob = document.querySelector('.profile__job');
 const nameInput = document.querySelector('#username');
@@ -48,6 +49,19 @@ function closePopupAdd() {
 showPopupAddButton.addEventListener('click', openPopupAdd);
 closePopupAddButton.addEventListener('click', closePopupAdd);
 
+function openImagePopup(element) {
+    const popupImageName = popupImage.querySelector('.popup__title');
+    const popupImageCard = popupImage.querySelector('.popup__image');
+
+    popupImageName.textContent = element.name;
+    popupImageCard.src = element.link;
+    popupImage.classList.add('popup__opened');
+}
+
+function closeImagePopup() {
+    popupImage.classList.remove('popup__opened');
+}
+
 function deleteCard(evt) {
     evt.target.closest('.element').remove();
 }
@@ -56,13 +70,22 @@ function createNewCard(element) {
 const newCard = templateElement.content.cloneNode(true);
 const titleCard = newCard.querySelector('.element__title');
 const linkCard = newCard.querySelector('.element__image');
+const deleteButton = newCard.querySelector('.element__bin');
+const likeButton = newCard.querySelector('.element__like');
+
+
 titleCard.textContent = element.name;
 linkCard.src = element.link;
-const deleteButton = newCard.querySelector('.element__bin');
+
 deleteButton.addEventListener('click', deleteCard);
-const likeButton = newCard.querySelector('.element__like');
 likeButton.addEventListener('click', function(){
     likeButton.classList.toggle('element__like_active')
+})
+
+linkCard.addEventListener('click', () => {
+    openImagePopup(element);
+closeImagePopupButton.addEventListener('click', closeImagePopup);
+
 })
 
 return newCard;
