@@ -7,6 +7,7 @@
     padding: 0;
     background-color: transparent;
     cursor: pointer;
+    outline: none;
 }
 
 .element__like:hover {
@@ -14,8 +15,4 @@
     transition: linear 0.3s;
 }
 
-.element__like:focus {
-    outline: none;
-    background-color: #000000;
-}
 
