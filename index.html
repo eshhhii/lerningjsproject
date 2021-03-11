@@ -29,8 +29,8 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
-                    
-            </ul>
+
+                </ul>
             </section>
         </main>
         <footer class="footer">
@@ -42,44 +42,47 @@
             <button type="button" class="popup__close" aria-label="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="form">
-            <fieldset class="popup__fieldset">
-                <input class="popup__input" id="username" type="text" value="Жак-Ив Кусто" placeholder="Имя">
-                <input class="popup__input" id="userjob" type="text" value="Исследователь океана" placeholder="О себе">
-            </fieldset>
-            <button type="submit" class="popup__save">Сохранить</button>
-        </form>
+                <fieldset class="popup__fieldset">
+                    <input class="popup__input" id="username" type="text" value="Жак-Ив Кусто" placeholder="Имя">
+                    <input class="popup__input" id="userjob" type="text" value="Исследователь океана"
+                        placeholder="О себе">
+                </fieldset>
+                <button type="submit" class="popup__save">Сохранить</button>
+            </form>
+            </div>
     </section>
     <section class="popup popup_add">
         <div class="popup__container">
             <button type="button" class="popup__close" aria-label="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__form_add" name="form" id="popupFormAdd">
-            <fieldset class="popup__fieldset">
-                <input class="popup__input" id="placeName" name="name" type="text" value="" placeholder="Название">
-                <input class="popup__input" id="placeLink" name="link" type="text" value="" placeholder="Ссылка на картинку">
-            </fieldset>
-            <button type="submit" class="popup__save">Создать</button>
-        </form>
+                <fieldset class="popup__fieldset">
+                    <input class="popup__input" id="placeName" name="name" type="text" value="" placeholder="Название">
+                    <input class="popup__input" id="placeLink" name="link" type="text" value=""
+                        placeholder="Ссылка на картинку">
+                </fieldset>
+                <button type="submit" class="popup__save">Создать</button>
+            </form>
         </div>
     </section>
     <section class="popup popup_images">
-        <div class="popup__container popup__container_image"> 
+        <div class="popup__container popup__container_image">
             <button type="button" class="popup__close" aria-label="Закрыть"></button>
-            <img src="" class="popup__image" alt="">
+            <img src="#" class="popup__image" alt="#">
             <h3 class="popup__title popup__title_image"></h3>
         </div>
     </section>
     <template class="template">
-    <li class="element">
-        <img src="" class="element__image" alt="#">
-        <button class="element__bin" aria-label="Удалить"></button>
-        <div class="element__text">
-            <p class="element__title"></p>
-            <button class="element__like" aria-label="Лайкнуть"></button>
-        </div>
-    </li>
-</template>
-<script src="scripts/initial-cards.js"></script>
+        <li class="element">
+            <img src="#" class="element__image" alt="#">
+            <button class="element__bin" aria-label="Удалить"></button>
+            <div class="element__text">
+                <p class="element__title"></p>
+                <button class="element__like" aria-label="Лайкнуть"></button>
+            </div>
+        </li>
+    </template>
+    <script src="scripts/initial-cards.js"></script>
     <script src="scripts/index.js"></script>
 </body>
 
