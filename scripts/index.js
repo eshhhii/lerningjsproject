@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-let popup = document.querySelector(".popup");
-let showPopupButton = document.querySelector(".profile__edit");
-let closePopupButton = document.querySelector(".popup__close");
-let userName = document.querySelector(".profile__name");
-let userJob = document.querySelector(".profile__job");
-let nameInput = document.querySelector("#username");
-let jobInput = document.querySelector("#userjob");
-let formElement = document.querySelector(".popup__form");
-
-function showPopup() {
-    popup.classList.add("popup_opened");
-    if (popup.classList.contains("popup_opened")) {
-        nameInput.value = userName.textContent;
-        jobInput.value = userJob.textContent;
-    }
-}
-
-function closePopup() {
-    popup.classList.remove("popup_opened");
-}
-=======
 const popup = document.querySelector(".popup");
 const popupEdit = document.querySelector(".popup_edit");
 const popupAdd = document.querySelector(".popup_add");
@@ -38,7 +16,6 @@ const addCard = document.querySelector("#popupFormAdd");
 const templateElement = document.querySelector(".template");
 
 let formElement = document.querySelector(".popup__container");
->>>>>>> develop
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
