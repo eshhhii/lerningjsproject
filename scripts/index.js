@@ -46,7 +46,7 @@ closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
 function openImagePopup(element) {
     popupImageName.textContent = element.name;
     popupImageCard.src = element.link;
-    popupImage.classList.add('popup_opened');
+    openPopup(popupImage);
 }
 
 function deleteCard(evt) {
