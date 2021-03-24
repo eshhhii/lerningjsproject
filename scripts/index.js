@@ -37,7 +37,13 @@ function closePopupEdit() {
 showPopupButton.addEventListener("click", openPopupEdit);
 closePopupButton.addEventListener("click", closePopupEdit);
 
+function notValidButton(addCard){
+const addButton = addCard.querySelector('.popup__save');
+addButton.classList.add('popup__save_disabled');
+}
+
 function openPopupAdd() {
+    notValidButton(addCard);
     popupAdd.classList.add("popup__opened");
 }
 

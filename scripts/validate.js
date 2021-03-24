@@ -45,10 +45,10 @@ const setInputListeners = (formElement, {inputSelector, submitButtonSelector, ..
         inputElement => {
             inputElement.addEventListener('input', () => {
                 checkInput(formElement, inputElement, rest);
-            })
                 toggleButtonState(inputList, buttonElement, rest);
-        }
-    )
+            })
+        });
+
 }
 
 const enableValidation = ({formSelector, ...rest}) => {
@@ -60,6 +60,8 @@ const enableValidation = ({formSelector, ...rest}) => {
         setInputListeners(formElement, rest);
     });
 }
+
+
 
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
