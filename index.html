@@ -42,12 +42,16 @@
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="form">
                 <fieldset class="popup__fieldset">
-                    <input class="popup__input" id="username" type="text" value="Жак-Ив Кусто" placeholder="Имя" minlength="2" maxlength="40" required>   
-                    <input class="popup__input" id="userjob" type="text" value="Исследователь океана" placeholder="О себе" minlength="2" maxlength="200" required>
+                    <input class="popup__input" id="username" type="text" value="Жак-Ив Кусто" placeholder="Имя"
+                        minlength="2" maxlength="40" required>
+                    <span class="popup__error" id="username-error"></span>
+                    <input class="popup__input" id="userjob" type="text" value="Исследователь океана"
+                        placeholder="О себе" minlength="2" maxlength="200" required>
+                    <span class="popup__error" id="userjob-error"></span>
                 </fieldset>
                 <button type="submit" class="popup__save">Сохранить</button>
             </form>
-            </div>
+        </div>
     </section>
     <section class="popup popup_add">
         <div class="popup__container">
@@ -55,8 +59,12 @@
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__form_add" name="form" id="popupFormAdd">
                 <fieldset class="popup__fieldset">
-                    <input class="popup__input" id="placeName" name="name" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
-                    <input class="popup__input" id="placeLink" name="link" type="url" value="" placeholder="Ссылка на картинку" required>
+                    <input class="popup__input" id="placeName" name="name" type="text" value="" placeholder="Название"
+                        minlength="2" maxlength="30" required>
+                    <span class="popup__error" id="placeName-error"></span>
+                    <input class="popup__input" id="placeLink" name="link" type="url" value=""
+                        placeholder="Ссылка на картинку" required>
+                    <span class="popup__error" id="placeLink-error"></span>
                 </fieldset>
                 <button type="submit" class="popup__save">Создать</button>
             </form>
