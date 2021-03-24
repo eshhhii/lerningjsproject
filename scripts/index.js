@@ -1,6 +1,7 @@
-const popupEdit = document.querySelector('.popup_edit');
-const popupAdd = document.querySelector('.popup_add');
-const popupImage = document.querySelector('.popup_images');
+const popup = document.querySelector(".popup");
+const popupEdit = document.querySelector(".popup_edit");
+const popupAdd = document.querySelector(".popup_add");
+const popupImage = document.querySelector(".popup_images");
 const showPopupButton = document.querySelector(".profile__edit");
 const closePopupButton = document.querySelector(".popup__close");
 const showPopupAddButton = document.querySelector(".profile__add");
@@ -70,7 +71,6 @@ function showImagePopup(element) {
     const popupImageName = popupImage.querySelector(".popup__title");
     const popupImageCard = popupImage.querySelector(".popup__image");
 
-function openImagePopup(element) {
     popupImageName.textContent = element.name;
     popupImageCard.src = element.link;
     popupImageCard.alt = element.name;
@@ -125,8 +125,6 @@ function createNewCard(element) {
     return newCard;
 }
 
-closeImagePopupButton.addEventListener('click', () => closePopup(popupImage));
-
 function renderList() {
     const result = initialCards.map(createNewCard);
 
@@ -147,4 +145,4 @@ function addCardFormListener(evt) {
 }
 
 renderList();
-addCard.addEventListener('submit', addCardFormListener);
+addCard.addEventListener("submit", addCardFormListener);
