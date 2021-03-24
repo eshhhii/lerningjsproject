@@ -36,6 +36,10 @@ function closePopupEdit() {
 
 showPopupButton.addEventListener("click", openPopupEdit);
 closePopupButton.addEventListener("click", closePopupEdit);
+popupEdit.addEventListener('click', closePopupEdit);
+popupEdit.querySelector('.popup__container').addEventListener('click', function (evt){
+    evt.stopPropagation();
+});
 
 function notValidButton(addCard){
 const addButton = addCard.querySelector('.popup__save');
@@ -53,6 +57,10 @@ function closePopupAdd() {
 
 showPopupAddButton.addEventListener("click", openPopupAdd);
 closePopupAddButton.addEventListener("click", closePopupAdd);
+popupAdd.addEventListener('click', closePopupAdd);
+popupAdd.querySelector('.popup__container').addEventListener('click', function (evt){
+    evt.stopPropagation();
+});
 
 function openImagePopup(element) {
     const popupImageName = popupImage.querySelector(".popup__title");
@@ -90,6 +98,10 @@ function createNewCard(element) {
     linkCard.addEventListener("click", () => {
         openImagePopup(element);
         closeImagePopupButton.addEventListener("click", closeImagePopup);
+        popupImage.addEventListener('click', closeImagePopup);
+popupImage.querySelector('.popup__container').addEventListener('click', function (evt){
+    evt.stopPropagation();
+});
     });
 
     return newCard;
