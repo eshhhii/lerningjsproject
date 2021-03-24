@@ -16,26 +16,26 @@ const addCard = document.querySelector("#popupFormAdd");
 const templateElement = document.querySelector(".template");
 let formElement = document.querySelector(".popup__container");
 
-function notValidButton(addCard){
-    const addButton = addCard.querySelector('.popup__save');
-    addButton.classList.add('popup__save_disabled');
-    }
-
-const escClosePopup = function (evt) {
-    const allPopup = document.querySelector('.popup_opened')
-      if (evt.key === 'Escape'){
-          closePopup(allPopup);
-    }
-  }
-
-function openPopup(popup){
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', escClosePopup);
+function notValidButton(addCard) {
+    const addButton = addCard.querySelector(".popup__save");
+    addButton.classList.add("popup__save_disabled");
 }
 
-function closePopup(popup){
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', escClosePopup);
+const escClosePopup = function (evt) {
+    const allPopup = document.querySelector(".popup_opened");
+    if (evt.key === "Escape") {
+        closePopup(allPopup);
+    }
+};
+
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
+    document.addEventListener("keydown", escClosePopup);
+}
+
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", escClosePopup);
 }
 
 showPopupButton.addEventListener("click", function () {
@@ -46,10 +46,10 @@ closePopupButton.addEventListener("click", function () {
     closePopup(popupEdit);
 });
 
-popupEdit.addEventListener('click', function () {
+popupEdit.addEventListener("click", function () {
     closePopup(popupEdit);
 });
-popupEdit.querySelector('.popup__container').addEventListener('click', function (evt){
+popupEdit.querySelector(".popup__container").addEventListener("click", function (evt) {
     evt.stopPropagation();
 });
 
@@ -57,13 +57,13 @@ showPopupAddButton.addEventListener("click", function () {
     notValidButton(addCard);
     openPopup(popupAdd);
 });
-closePopupAddButton.addEventListener("click",  function () {
+closePopupAddButton.addEventListener("click", function () {
     closePopup(popupAdd);
 });
-popupAdd.addEventListener('click', function () {
+popupAdd.addEventListener("click", function () {
     closePopup(popupAdd);
 });
-popupAdd.querySelector('.popup__container').addEventListener('click', function (evt){
+popupAdd.querySelector(".popup__container").addEventListener("click", function (evt) {
     evt.stopPropagation();
 });
 
@@ -76,16 +76,15 @@ function showImagePopup(element) {
     popupImageCard.alt = element.name;
     openPopup(popupImage);
 }
-closeImagePopupButton.addEventListener("click",  function () {
+closeImagePopupButton.addEventListener("click", function () {
     closePopup(popupImage);
 });
-popupImage.addEventListener('click',function () {
+popupImage.addEventListener("click", function () {
     closePopup(popupImage);
 });
-popupImage.querySelector('.popup__container').addEventListener('click', function (evt){
-evt.stopPropagation();
+popupImage.querySelector(".popup__container").addEventListener("click", function (evt) {
+    evt.stopPropagation();
 });
-
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -96,7 +95,6 @@ function formSubmitHandler(evt) {
 }
 
 formElement.addEventListener("submit", formSubmitHandler);
-
 
 function createNewCard(element) {
     const newCard = templateElement.content.cloneNode(true);
@@ -115,17 +113,17 @@ function createNewCard(element) {
     function deleteCard(evt) {
         evt.target.closest(".element").remove();
     }
-    
+
     linkCard.addEventListener("click", function () {
-        const titlePopup = popupImage.querySelector('.popup__title');
-        const imagePopup = popupImage.querySelector('.popup__image');
+        const titlePopup = popupImage.querySelector(".popup__title");
+        const imagePopup = popupImage.querySelector(".popup__image");
         titlePopup.textContent = element.name;
         imagePopup.src = element.link;
         imagePopup.alt = element.name;
         openPopup(popupImage);
     });
     return newCard;
-    }
+}
 
 function renderList() {
     const result = initialCards.map(createNewCard);
