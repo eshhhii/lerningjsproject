@@ -27,21 +27,6 @@ function disableSubmitButton(addCard) {
     addButton.classList.add("popup__save_disabled");
 }
 
-/* function убратьКОнтейнерыДляОшибокИзФормы (форма, классПолей, классКоторыйНадоУбрать) {
-  const даннаяФОрма = документ.querySelector(форма)
-  const поляДаннойФормы = даннаяФОрма.querySelector(классПолей)
-  поляДаннойФормы.forEach( .... тут найти контейнеры ошибок для каждого поля и скрыть с помощью "классКоторыйНадоУбрать"...)
-} */
-/*
-function removeFormErrorContainer(popup){
-    const formErrors = popup.querySelectorAll('.popup__error');
-    console.log(formErrors);
-    formErrors.forEach((error) => {
-            error.classList.remove('popup__error_visible');
-            error.classList.remove('popup__input_type_error');
-        }); 
-}*/
-
 function removeFormErrorContainer(popup){
     const formErrors = popup.querySelectorAll('.popup__error');
     console.log(formErrors);
