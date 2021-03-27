@@ -58,7 +58,7 @@ const enableValidation = ({ formSelector, ...rest }) => {
     });
 };
 
-enableValidation({
+const validationConfig = enableValidation({
     formSelector: ".popup__form",
     inputSelector: ".popup__input",
     submitButtonSelector: ".popup__save",

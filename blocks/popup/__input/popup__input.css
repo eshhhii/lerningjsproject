@@ -12,6 +12,7 @@
     cursor: pointer;
     padding: 0;
     padding-bottom: 13px;
+    color: #000000;
 }
 
 .popup__input:last-child {
@@ -21,10 +22,10 @@
 .popup__input:focus {
     outline-style: inherit;
 }
-
+/*
 .popup__input::placeholder {
     color: #000000;
-}
+}*/
 
 @media all and (max-width: 586px) {
     .popup__input {
