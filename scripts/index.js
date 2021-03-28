@@ -27,16 +27,22 @@ function disableSubmitButton(buttonElement) {
     addButton.classList.add("popup__save_disabled");
 }
 
-function removeFormErrorContainer(popup){
-    const formErrors = popup.querySelectorAll('.popup__error');
-    formErrors.forEach((error) => {
-            error.classList.remove('popup__error_visible');
-        }); 
-        const inputErrors = popup.querySelectorAll('.popup__input');
-        inputErrors.forEach((error) => {
-            error.classList.remove('popup__input_type_error');
+    function removeFormErrorContainer(popup){
+        const formErrors = popup.querySelectorAll('.popup__error');
+        formErrors.forEach((error) => {
+                error.classList.remove('popup__error_visible');
+            });
+            const inputErrors = popup.querySelectorAll('.popup__input');
+            inputErrors.forEach((error) => {
+                error.classList.remove('popup__input_type_error');
+            });
+        }   
+    function removeInputValue(popup){
+        const valueInput = popup.querySelectorAll('.popup__input');
+        valueInput.forEach((element) => {
+           element.value = "";
         });
-    }   
+    }
 
 const escClosePopup = function (evt) {
     const openedPopup = document.querySelector(".popup_opened");
@@ -74,10 +80,9 @@ popupEdit.querySelector(".popup__container").addEventListener("click", function 
 });
 
 showPopupAddButton.addEventListener("click", function () {
-    inputName.value = "";
-    inputPlace.value = "";
     disableSubmitButton();
     removeFormErrorContainer(popupAdd);
+    removeInputValue(popupAdd);
     openPopup(popupAdd);
 });
 closePopupAddButton.addEventListener("click", function () {
@@ -155,8 +160,7 @@ function submitAddCardForm(evt) {
     const item = { name: inputName.value, link: inputPlace.value };
     const newCardItem = createNewCard(item);
     container.prepend(newCardItem);
-    inputName.value = "";
-    inputPlace.value = "";
+    removeInputValue(popupAdd);
 
     closePopup(popupAdd);
 }
