@@ -7,8 +7,8 @@ const closePopupButton = document.querySelector(".popup__close");
 const showPopupAddButton = document.querySelector(".profile__add");
 const closePopupAddButton = popupAdd.querySelector(".popup__close");
 const closeImagePopupButton = popupImage.querySelector(".popup__close");
-const Username = document.querySelector(".profile__name");
-const Userjob = document.querySelector(".profile__job");
+const userName = document.querySelector(".profile__name");
+const userJob = document.querySelector(".profile__job");
 const nameInput = document.querySelector("#username");
 const jobInput = document.querySelector("#userjob");
 const container = document.querySelector(".elements__list");
@@ -23,28 +23,25 @@ const templateElement = document.querySelector(".template");
 const addButton = addCard.querySelector(".popup__save");
 const formEditProfile = document.querySelector(".popup__container");
 
-function disableSubmitButton(addCard) {
+function disableSubmitButton(buttonElement) {
     addButton.classList.add("popup__save_disabled");
 }
 
 function removeFormErrorContainer(popup){
     const formErrors = popup.querySelectorAll('.popup__error');
-    console.log(formErrors);
     formErrors.forEach((error) => {
             error.classList.remove('popup__error_visible');
         }); 
         const inputErrors = popup.querySelectorAll('.popup__input');
         inputErrors.forEach((error) => {
             error.classList.remove('popup__input_type_error');
-            inputName.value = "";
-            inputPlace.value = "";
         });
     }   
 
 const escClosePopup = function (evt) {
-    const allPopup = document.querySelector(".popup_opened");
+    const openedPopup = document.querySelector(".popup_opened");
     if (evt.key === "Escape") {
-        closePopup(allPopup);
+        closePopup(openedPopup);
     }
 };
 
@@ -59,10 +56,10 @@ function closePopup(popup) {
 }
 
 showPopupEditProfileButton.addEventListener("click", function () {
+    nameInput.value = userName.textContent;
+    jobInput.value = userJob.textContent;
     removeFormErrorContainer(popupEdit);
     openPopup(popupEdit);
-    nameInput.value = Username.textContent;
-    jobInput.value = Userjob.textContent;
 });
 
 closePopupButton.addEventListener("click", function () {
@@ -77,7 +74,9 @@ popupEdit.querySelector(".popup__container").addEventListener("click", function 
 });
 
 showPopupAddButton.addEventListener("click", function () {
-    disableSubmitButton(addCard);
+    inputName.value = "";
+    inputPlace.value = "";
+    disableSubmitButton();
     removeFormErrorContainer(popupAdd);
     openPopup(popupAdd);
 });
@@ -109,8 +108,8 @@ popupImage.querySelector(".popup__container").addEventListener("click", function
 
 function submitEditProfileForm(evt) {
     evt.preventDefault();
-    Username.textContent = nameInput.value;
-    Userjob.textContent = jobInput.value;
+    userName.textContent = nameInput.value;
+    userJob.textContent = jobInput.value;
     
     closePopup(popupEdit);
 }
