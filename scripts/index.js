@@ -1,4 +1,9 @@
-const popup = document.querySelector(".popup");
+import {initialCards} from './initial-cards.js';
+import {Card} from './Card.js';
+import {popup, popupEdit, popupAdd, popupImage, showPopupButton, closePopupButton, showPopupAddButton} from './constants.js';
+import {closePopupAddButton, closeImagePopupButton, userName, userJob, nameInput, jobInput, container, addCard, templateElement, formElement} from './constants.js';
+
+/*const popup = document.querySelector(".popup");
 const popupEdit = document.querySelector(".popup_edit");
 const popupAdd = document.querySelector(".popup_add");
 const popupImage = document.querySelector(".popup_images");
@@ -7,14 +12,14 @@ const closePopupButton = document.querySelector(".popup__close");
 const showPopupAddButton = document.querySelector(".profile__add");
 const closePopupAddButton = popupAdd.querySelector(".popup__close");
 const closeImagePopupButton = popupImage.querySelector(".popup__close");
-const Username = document.querySelector(".profile__name");
-const Userjob = document.querySelector(".profile__job");
+const userName = document.querySelector(".profile__name");
+const userJob = document.querySelector(".profile__job");
 const nameInput = document.querySelector("#username");
 const jobInput = document.querySelector("#userjob");
 const container = document.querySelector(".elements__list");
 const addCard = document.querySelector("#popupFormAdd");
 const templateElement = document.querySelector(".template");
-let formElement = document.querySelector(".popup__container");
+let formElement = document.querySelector(".popup__container");*/
 
 function notValidButton(addCard) {
     const addButton = addCard.querySelector(".popup__save");
@@ -67,7 +72,7 @@ popupAdd.querySelector(".popup__container").addEventListener("click", function (
     evt.stopPropagation();
 });
 
-function showImagePopup(element) {
+export function showImagePopup(element) {
     const popupImageName = popupImage.querySelector(".popup__title");
     const popupImageCard = popupImage.querySelector(".popup__image");
 
@@ -88,14 +93,14 @@ popupImage.querySelector(".popup__container").addEventListener("click", function
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
-    document.querySelector(".profile__name").textContent = nameInput.value;
-    document.querySelector(".profile__job").textContent = jobInput.value;
+    userName.textContent = nameInput.value;
+    userJob.textContent = jobInput.value;
 
     closePopup(popupEdit);
 }
 
 formElement.addEventListener("submit", formSubmitHandler);
-
+/*
 function createNewCard(element) {
     const newCard = templateElement.content.cloneNode(true);
     const titleCard = newCard.querySelector(".element__title");
@@ -110,6 +115,13 @@ function createNewCard(element) {
     likeButton.addEventListener("click", function () {
         likeButton.classList.toggle("element__like_active");
     });
+
+    linkCard.addEventListener("click", function () {
+        showImagePopup(element);
+      })
+    return newCard;
+}
+
     function deleteCard(evt) {
         evt.target.closest(".element").remove();
     }
@@ -123,11 +135,16 @@ function createNewCard(element) {
         openPopup(popupImage);
     });
     return newCard;
-}
+}*/
+
+initialCards.forEach(function(item){
+    const card = new Card(item.title, item.link, templateElement);
+    container.append(card.generateCard()); 
+})
 
 function renderList() {
-    const result = initialCards.map(createNewCard);
-
+    const card = new Card(initialCards, templateElement);
+    const result = initialCards.map(card);
     container.append(...result);
 }
 

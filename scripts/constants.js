@@ -1,0 +1,17 @@
+export const popup = document.querySelector(".popup");
+export const popupEdit = document.querySelector(".popup_edit");
+export const popupAdd = document.querySelector(".popup_add");
+export const popupImage = document.querySelector(".popup_images");
+export const showPopupButton = document.querySelector(".profile__edit");
+export const closePopupButton = document.querySelector(".popup__close");
+export const showPopupAddButton = document.querySelector(".profile__add");
+export const closePopupAddButton = popupAdd.querySelector(".popup__close");
+export const closeImagePopupButton = popupImage.querySelector(".popup__close");
+export const userName = document.querySelector(".profile__name");
+export const userJob = document.querySelector(".profile__job");
+export const nameInput = document.querySelector("#username");
+export const jobInput = document.querySelector("#userjob");
+export const container = document.querySelector(".elements__list");
+export const addCard = document.querySelector("#popupFormAdd");
+export const templateElement = document.querySelector(".template");
+export let formElement = document.querySelector(".popup__container");
