@@ -1,15 +1,17 @@
+import {initialCards} from './initial-cards.js'
+import {templateElement, container} from './constants.js'
+
 export class Card {
-    constructor(data, cardSelector){
-        this._title = data.title;
-        this._link = data.link;
+    constructor(title, link, cardSelector){
+        this._title = title;
+        this._link = link;
 
         this._cardSelector = cardSelector;
     }
 
     _getTemplate() {
-        const newCard = document
-        .querySelector(this._cardSelector)
-        .content
+        const newCard =
+        templateElement.content
         .querySelector('.element')
         .cloneNode(true);
 
@@ -19,7 +21,8 @@ export class Card {
         this._element = this._getTemplate();
     
         const titleCard = this._element.querySelector('.element__title').textContent = this._title;
-        const linkCard = this._element.querySelector('.element__image').src = this._image;
+        const linkCard = this._element.querySelector('.element__image');
+        linkCard.src = this._link;
         linkCard.alt = this._title;
         const deleteButton = this._element.querySelector('.element__bin');
         const likeButton = this._element.querySelector('.element__like');
@@ -55,6 +58,11 @@ _setEventListeners(){
     return newCard;
 }
 }
+initialCards.forEach(function(item){
+    const card = new Card(item.name, item.link, templateElement);
+    const cardElement = card.generateCard();
+    container.append(cardElement); 
+})
 
 /*
 

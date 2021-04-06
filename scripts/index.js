@@ -136,17 +136,18 @@ function createNewCard(element) {
     });
     return newCard;
 }*/
-
+/*
 initialCards.forEach(function(item){
     const card = new Card(item.title, item.link, templateElement);
-    container.append(card.generateCard()); 
+    const cardElement = card.generateCard();
+    container.append(cardElement); 
 })
 
 function renderList() {
     const card = new Card(initialCards, templateElement);
     const result = initialCards.map(card);
     container.append(...result);
-}
+}*/
 
 function addCardFormListener(evt) {
     evt.preventDefault();
@@ -160,6 +161,6 @@ function addCardFormListener(evt) {
 
     closePopup(popupAdd);
 }
-
-renderList();
+/*
+renderList();*/
 addCard.addEventListener("submit", addCardFormListener);
