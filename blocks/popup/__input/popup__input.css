@@ -1,6 +1,5 @@
 .popup__input {
     width: 358px;
-    height: 27px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
@@ -12,6 +11,8 @@
     line-height: 17px;
     cursor: pointer;
     padding: 0;
+    padding-bottom: 13px;
+    color: #000000;
 }
 
 .popup__input:last-child {
@@ -20,10 +21,6 @@
 
 .popup__input:focus {
     outline-style: inherit;
-}
-
-.popup__input::placeholder {
-    color: #000000;
 }
 
 @media all and (max-width: 586px) {

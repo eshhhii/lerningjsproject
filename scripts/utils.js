@@ -4,8 +4,8 @@ export function openPopup(popup) {
 }
 
 export const escClosePopup = function (evt) {
-    const allPopup = document.querySelector(".popup_opened");
+    const openedPopup = document.querySelector(".popup_opened");
     if (evt.key === "Escape") {
-        closePopup(allPopup);
+        closePopup(openedPopup);
     }
 };
