@@ -22,10 +22,6 @@
 .popup__input:focus {
     outline-style: inherit;
 }
-/*
-.popup__input::placeholder {
-    color: #000000;
-}*/
 
 @media all and (max-width: 586px) {
     .popup__input {
