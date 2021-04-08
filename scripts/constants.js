@@ -12,7 +12,7 @@ export const userJob = document.querySelector(".profile__job");
 export const nameInput = document.querySelector("#username");
 export const jobInput = document.querySelector("#userjob");
 export const container = document.querySelector(".elements__list");
-export const popupForm = document.querySelector('.popup__form');
+export const popupForm = document.querySelector(".popup__form");
 export const addCard = document.querySelector("#popupFormAdd");
 export const inputName = addCard.querySelector("#placeName");
 export const inputPlace = addCard.querySelector("#placeLink");
@@ -28,4 +28,4 @@ export const validationConfig = {
     inactiveButtonClass: "popup__save_disabled",
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
-    };
+};
