@@ -36,6 +36,7 @@ showPopupEditProfileButton.addEventListener("click", function () {
     nameInput.value = userName.textContent;
     jobInput.value = userJob.textContent;
     removeFormErrorContainer(popupEdit);
+    editFormValidator.enableValidation();
     openPopup(popupEdit);
 });
 
@@ -54,7 +55,7 @@ showPopupAddButton.addEventListener("click", function () {
     disableSubmitButton();
     removeFormErrorContainer(popupAdd);
     removeInputValue(popupAdd);
-
+    addFormValidator.enableValidation();
     openPopup(popupAdd);
 });
 closePopupAddButton.addEventListener("click", function () {
@@ -120,6 +121,6 @@ const formList = Array.from(document.querySelectorAll(validationConfig._formSele
     });
 
 const editFormValidator = new FormValidator(validationConfig, popupForm);
-editFormValidator.enableValidation();
+/*editFormValidator.enableValidation();*/
 const addFormValidator = new FormValidator(validationConfig, addCard);
-addFormValidator.enableValidation();
+/*addFormValidator.enableValidation();*/
