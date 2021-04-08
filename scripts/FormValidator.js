@@ -1,13 +1,14 @@
-class FormValidator{
-    constructor(config, formElement){
-    this._inputSelector = config.inputSelector;
-    this._submitButtonSelector = config.submitButtonSelector;
-    this._inactiveButtonClass = config.inactiveButtonClass;
-    this._inputErrorClass = config.inputErrorClass;
-    this._errorClass = config.errorClass;
+import {addCard, validationConfig} from './constants.js'
+
+export class FormValidator{
+    constructor(rest, formElement){
+    this._inputSelector = rest.inputSelector;
+    this._submitButtonSelector = rest.submitButtonSelector;
+    this._inactiveButtonClass = rest.inactiveButtonClass;
+    this._inputErrorClass = rest.inputErrorClass;
+    this._errorClass = rest.errorClass;
     this._formElement = formElement;
     }
-
 
 _allInputsEmpty() {
     return !this._inputList.some((inputElement) => inputElement.value.length > 0);
@@ -17,7 +18,7 @@ _hasInvalidInput() {
     return this._inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
-_toggleButtonState(inputList, buttonElement, { inactiveButtonClass }) {
+toggleButtonState() {
     if (_hasInvalidInput(inputList) || _allInputsEmpty(this._inputList)) {
         buttonElement.classList.add(this._inactiveButtonClass);
         buttonElement.setAttribute("disabled", true);
@@ -25,50 +26,51 @@ _toggleButtonState(inputList, buttonElement, { inactiveButtonClass }) {
         buttonElement.classList.remove(this._inactiveButtonClass);
         buttonElement.removeAttribute("disabled");
     }
-};
+}
 
-_showInputError(formElement, inputElement, { inputErrorClass, errorClass }) {
+_showInputError() {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(errorClass);
-};
+}
 
-_hideInputError(formElement, inputElement, { inputErrorClass, errorClass }) {
+_hideInputError() {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
-};
+}
 
-_checkInput(formElement, inputElement, rest) {
+_checkInput() {
+    console.log(this._inputElement);
     if (inputElement.validity.valid) {
-        _hideInputError(formElement, inputElement, rest);
+        this._hideInputError();
     } else {
-        _showInputError(formElement, inputElement, rest);
+        this._showInputError();
     }
-};
+}
 
-_setInputListeners(formElement, { inputSelector, submitButtonSelector, ...rest }) {
-    const inputList = Array.from(this._formElement.querySelectorAll(inputSelector));
-    const buttonElement = this._formElement.querySelector(submitButtonSelector);
-    inputList.forEach((inputElement) => {
+_setInputListeners() {
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    this._inputList.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
-            checkInput(formElement, inputElement, rest);
-            _toggleButtonState(inputList, buttonElement, rest);
+            this._checkInput();
+            this.toggleButtonState();
         });
-    });
-};
+    })
+}
 
-enableValidation({ formSelector, ...rest }) {
-    const formList = Array.from(document.querySelectorAll(formSelector));
+enableValidation() {
+    this._setInputListeners();
+}
+}
+
+   /* const formList = Array.from(document.querySelectorAll(formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
-        _setInputListeners(formElement, rest);
-    });
-};
-}
 
 const validationConfig = {
     formSelector: ".popup__form",
@@ -78,4 +80,4 @@ const validationConfig = {
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
     };
-    enableValidation(validationConfig);
+    enableValidation(validationConfig); */

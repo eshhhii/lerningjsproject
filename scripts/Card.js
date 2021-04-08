@@ -1,5 +1,5 @@
 import {openPopup, escClosePopup} from './utils.js'
-import {templateElement, popupImage} from './constants.js'
+import {templateElement, popupImage, popupImageName, popupImageCard} from './constants.js'
 
 
 export class Card {
@@ -49,11 +49,9 @@ _deleteCard() {
     this._element.remove();
 }
 _showCard(){
-    const titlePopup = popupImage.querySelector(".popup__title");
-        const imagePopup = popupImage.querySelector(".popup__image");
-        titlePopup.textContent = this._title;
-        imagePopup.src = this._link;
-        imagePopup.alt = this._title;
+        popupImageName.textContent = this._title;
+        popupImageCard.src = this._link;
+        popupImageCard.alt = this._title;
         openPopup(popupImage);
         escClosePopup(popupImage);
     }
