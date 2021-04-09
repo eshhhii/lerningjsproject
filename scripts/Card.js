@@ -1,5 +1,6 @@
-import { openPopup, escClosePopup } from "./utils.js";
-import { templateElement, popupImage, popupImageName, popupImageCard } from "./constants.js";
+import { openPopup} from "./utils.js";
+import { templateElement, popupImage} from "./constants.js";
+import {showImagePopup} from './index.js'
 
 export class Card {
     constructor(name, link, cardSelector) {
@@ -44,10 +45,7 @@ export class Card {
         this._element.remove();
     }
     _showCard() {
-        popupImageName.textContent = this._title;
-        popupImageCard.src = this._link;
-        popupImageCard.alt = this._title;
+        showImagePopup({name: this._title, link: this._link, alt: this._title});
         openPopup(popupImage);
-        escClosePopup(popupImage);
-    }
+}
 }
