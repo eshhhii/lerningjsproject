@@ -1,7 +1,7 @@
 import { initialCards } from "./initial-cards.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { openPopup, escClosePopup } from "./utils.js";
+import { openPopup, closePopup, removeFormErrorContainer, removeInputValue} from "./utils.js";
 import {
     popup,
     popupEdit,
@@ -31,28 +31,6 @@ import {
 
 function disableSubmitButton(buttonElement) {
     addButton.classList.add("popup__save_disabled");
-}
-
-function removeFormErrorContainer(popup) {
-    const formErrors = popup.querySelectorAll(".popup__error");
-    formErrors.forEach((error) => {
-        error.classList.remove("popup__error_visible");
-    });
-    const inputErrors = popup.querySelectorAll(".popup__input");
-    inputErrors.forEach((error) => {
-        error.classList.remove("popup__input_type_error");
-    });
-}
-function removeInputValue(popup) {
-    const valueInput = popup.querySelectorAll(".popup__input");
-    valueInput.forEach((element) => {
-        element.value = "";
-    });
-}
-
-function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", escClosePopup);
 }
 
 showPopupEditProfileButton.addEventListener("click", function () {
@@ -116,17 +94,24 @@ function submitEditProfileForm(evt) {
 
 formEditProfile.addEventListener("submit", submitEditProfileForm);
 
-initialCards.forEach(function (item) {
-    const card = new Card(item.name, item.link, templateElement);
-    const cardElement = card.generateCard();
-    container.append(cardElement);
-});
+function createCard(name, link, templateElement) {
+    const card = new Card(name, link, templateElement);
+    return card.generateCard();
+  };
+
+  function renderCard (name, link, container, toEnd) {
+    const card = createCard(name, link);
+    const method = toEnd ? 'append' : 'prepend';
+    container[method](card);
+  }
+
+  initialCards.forEach((item) => {
+    renderCard(item.name, item.link, container, true);
+})
 
 function submitAddCardForm(evt) {
     evt.preventDefault();
-    const item = new Card(inputName.value, inputPlace.value);
-    const newCardItem = item.generateCard();
-    container.prepend(newCardItem);
+    renderCard(inputName.value, inputPlace.value, container);
     removeInputValue(popupAdd);
 
     closePopup(popupAdd);
