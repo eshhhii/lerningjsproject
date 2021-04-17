@@ -1,6 +1,6 @@
 import { openPopup} from "./utils.js";
 import { templateElement, popupImage} from "./constants.js";
-import {showImagePopup} from './index.js'
+import {showImagePopup} from "./index.js"
 
 export class Card {
     constructor(name, link, cardSelector) {
