@@ -1,20 +1,23 @@
-import {popup} from './constants.js'
-
-export class Popup{
+import {popupSelector} from './constants.js';
+export default class Popup {
     constructor(popupSelector) {
-        this._popupSelector = popupSelector;
+        this._popup = document.querySelector(popupSelector);
+        this._handleEscClose = this._handleEscClose.bind(this);
+        this._handleOverlayClose = this._handleOverlayClose.bind(this);
     }
-}
 
 open() {
     this._popup.classList.add("popup_opened");
-    setEventListeners();
-    
+    document.addEventListener("keydown", () =>{
+     this._handleEscClose()
+    });
 }
 
 close() {
     this._popup.classList.remove("popup_opened");
-    setEventListeners();
+    document.addEventListener("keydown", () =>{
+        this._handleEscClose()
+       });
 }
 
 _handleEscClose() {
@@ -23,26 +26,21 @@ _handleEscClose() {
         close(openedPopup);
     }
 }
+_handleOverlayClose() {
+    this._popup.addEventListener("click", () => {
+    this.close();
+    });
+this._popup.querySelector(".popup__container")
+.addEventListener("click",function (evt) {
+    evt.stopPropagation();
+});
+}
 
 setEventListeners() {
-    document.addEventListener("keydown", () => { //определить, что будет здесь this перед документ
-        this._handleEscClose();
+    this._popup.querySelector('.popup__close')
+    .addEventListener("click", () => { 
+        this.close();
     });
+    this._handleOverlayClose();
 }
-/*
-export function openPopup(popup) {
-    popup.classList.add("popup_opened");
-    document.addEventListener("keydown", escClosePopup);
 }
- 
-export function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", escClosePopup);
-}
-
-export const escClosePopup = function (evt) {
-    const openedPopup = document.querySelector(".popup_opened");
-    if (evt.key === "Escape") {
-        closePopup(openedPopup);
-    }
-}*/

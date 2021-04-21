@@ -1,4 +1,4 @@
-export function openPopup(popup) {
+/*export function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", escClosePopup);
 }
@@ -13,7 +13,7 @@ export const escClosePopup = function (evt) {
     if (evt.key === "Escape") {
         closePopup(openedPopup);
     }
-}
+}*/
 
 export function removeFormErrorContainer(popup) {
     const formErrors = popup.querySelectorAll(".popup__error");
@@ -25,10 +25,10 @@ export function removeFormErrorContainer(popup) {
         error.classList.remove("popup__input_type_error");
     });
 }
-
+/*
 export function removeInputValue(popup) {
     const valueInput = popup.querySelectorAll(".popup__input");
     valueInput.forEach((element) => {
         element.value = "";
     });
-}
+}*/

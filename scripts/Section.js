@@ -4,7 +4,7 @@ export class Section {
         this._renderedItems = renderer;
         this._container = document.querySelector(containerSelector);
     }
-}
+
 
 renderer() {
 
