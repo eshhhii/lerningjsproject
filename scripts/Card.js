@@ -2,7 +2,7 @@ import { templateElement} from "./constants.js";
 
 
 export default class Card {
-    constructor({name, link, handleCardClick}, cardSelector) {
+    constructor(name, link,_handleCardClick, cardSelector) {
         this._title = name;
         this._link = link;
         this._handleCardClick = handleCardClick;
@@ -24,7 +24,7 @@ export default class Card {
         return this._element;
     }
 
-    _setEventListeners() {
+    setEventListeners() {
         this._element.querySelector(".element__bin").addEventListener("click", () => {
             this._deleteCard();
         });

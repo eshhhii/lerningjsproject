@@ -6,6 +6,7 @@ import Popup from "./Popup.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from './UserInfo.js';
+import Section from './Section.js';
 import {
    /* popup,*
     popupEdit,
@@ -19,8 +20,8 @@ import {
     /*userName,
     userJob,
     nameInput,
-    jobInput,*/
-    container,
+    jobInput,
+    container,*/
     popupForm,
     addCard,
     popupImageSelector, newCardPopupSelector, userJobSelector,userNameSelector,userInfoPopupSelector,
@@ -32,35 +33,85 @@ import {
     popupImageName,
     popupImageCard,
     validationConfig,
+    nameInput,
+    jobInput,
 } from "./constants.js";
 
 const imagePopup = new PopupWithImage(popupImageSelector);
-const userInfo = new UserInfo(userNameSelector, userJobSelector)
+
+const userInfo = new UserInfo(userNameSelector, userJobSelector);
+
 const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
     const item = {name: values.name, job: values.job};
     userInfo.setUserInfo(item.name, item.job);
     userInfoPopup.close();
 });
+
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
-const item = {name: values.name, link: values.link}
+const item = {name: values.name, link: values.link};
+const newElement = createCard(item);
+
 });
+
+
 imagePopup.setEventListeners();
 userInfoPopup.setEventListeners();
 newCardPopup.setEventListeners();
 
 showUserInfoPopup.addEventListener('click', () => {
+    const allUserInfo = userInfo.getuserinfo();
+    nameInput.value = allUserInfo.name;
+    jobInput.value = allUserInfo.job;
     userInfoPopup.open();
 });
+
 showNewCardPopup.addEventListener('click', () => {
     newCardPopup.open();
 });
+const cardList = new Section({items: initialCards, renderer:() => {
+    const card = new Card(name, link, templateElement, () => {});
+    const cardView = card.generateCard();
+    const rendercardList = addItem(cardView);
+}},'.elements__list');
 
-const card = new Card({name, link,
-    handleCardClick: () => {
-      imagePopup.open({name: this._title,
-        link: this._link})
-  , cardSelector}});
-  
+/*
+const cardList = new Section({items: initialCards, renderer:(item) => {
+    const card = new Card({data: item}, templateElement);
+    const cardView = card.generateCard();
+    const rendercardList = addItem(cardView);
+}},'.elements__list');
+ cardList.renderer();*/
+
+const createCard = ({data:item}) => {
+    const card = new Card({data:item,
+        handleCardClick: () => {imagePopup.open({name: item.name, link: item.link})}}
+        ,cardSelector)
+        card.generateCard();
+    }
+
+    function disableSubmitButton(buttonElement) {
+        addButton.classList.add("popup__save_disabled");
+    }
+
+    const formList = Array.from(document.querySelectorAll(validationConfig._formSelector));
+formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+    });
+});
+
+const userFormValidator = new FormValidator(validationConfig, popupForm);
+userFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(validationConfig, addCard);
+cardFormValidator.enableValidation();
+/*
+/*
+  const newCard = new Card({name, link, templateElement,
+    createCard:() => {
+    const card = new Card(name, link, templateElement);
+    return card.generateCard();
+  }});
   function renderCard (name, link, container, toEnd) {
     const card = createCard(name, link);
     const method = toEnd ? 'append' : 'prepend';
@@ -89,10 +140,6 @@ popupImage.querySelector(".popup__container").addEventListener("click", function
     evt.stopPropagation();
 }); */
 
-
-function disableSubmitButton(buttonElement) {
-    addButton.classList.add("popup__save_disabled");
-}
 /*
 showPopupEditProfileButton.addEventListener("click", function () {
     nameInput.value = userName.textContent;
@@ -160,13 +207,4 @@ function submitAddCardForm(evt) {
 
 addCard.addEventListener("submit", submitAddCardForm);*/
 
-const formList = Array.from(document.querySelectorAll(validationConfig._formSelector));
-formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-    });
-});
 
-const editFormValidator = new FormValidator(validationConfig, popupForm);
-
-const addFormValidator = new FormValidator(validationConfig, addCard);
