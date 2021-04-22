@@ -5,7 +5,7 @@ import {removeFormErrorContainer} from "./utils.js";
 import Popup from "./Popup.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
-
+import UserInfo from './UserInfo.js';
 import {
    /* popup,*
     popupEdit,
@@ -16,14 +16,14 @@ import {
     showNewCardPopup,
     /*closePopupAddButton,*/
     /*closeImagePopupButton,*/
-    userName,
+    /*userName,
     userJob,
     nameInput,
-    jobInput,
+    jobInput,*/
     container,
     popupForm,
     addCard,
-    popupImageSelector, newCardPopupSelector, userInfoPopupSelector,
+    popupImageSelector, newCardPopupSelector, userJobSelector,userNameSelector,userInfoPopupSelector,
     templateElement,
     /*addButton,
     formEditProfile,
@@ -35,8 +35,11 @@ import {
 } from "./constants.js";
 
 const imagePopup = new PopupWithImage(popupImageSelector);
-const userInfoPopup = new PopupWithForm(userInfoPopupSelector, () => {
-    alert('form was submitted')
+const userInfo = new UserInfo(userNameSelector, userJobSelector)
+const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
+    const item = {name: values.name, job: values.job};
+    userInfo.setUserInfo(item.name, item.job);
+    userInfoPopup.close();
 });
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
 const item = {name: values.name, link: values.link}
