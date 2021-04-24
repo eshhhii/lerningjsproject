@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
     constructor(config, formElement) {
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
@@ -44,6 +44,22 @@ export class FormValidator {
             this._buttonElement.classList.remove(this._inactiveButtonClass);
             this._buttonElement.removeAttribute("disabled");
         }
+    }
+    removeFormErrorContainer() {
+        const formErrors = this._formElement.querySelectorAll(".popup__error");
+        formErrors.forEach((error) => {
+            error.classList.remove(this._errorClass);
+        });
+        const inputErrors = this._formElement.querySelectorAll(this._inputSelector);
+        inputErrors.forEach((error) => {
+            error.classList.remove(this._inputErrorClass);
+        });
+    }
+    removeInputValue(){
+        const valueInput = this._formElement.querySelectorAll(".popup__input");
+        valueInput.forEach((element) => {
+            element.value = "";
+        });
     }
 
     _setInputListeners() {

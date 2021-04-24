@@ -14,7 +14,7 @@ export const escClosePopup = function (evt) {
         closePopup(openedPopup);
     }
 }*/
-
+/*
 export function removeFormErrorContainer(popup) {
     const formErrors = popup.querySelectorAll(".popup__error");
     formErrors.forEach((error) => {
@@ -25,7 +25,7 @@ export function removeFormErrorContainer(popup) {
         error.classList.remove("popup__input_type_error");
     });
 }
-/*
+
 export function removeInputValue(popup) {
     const valueInput = popup.querySelectorAll(".popup__input");
     valueInput.forEach((element) => {

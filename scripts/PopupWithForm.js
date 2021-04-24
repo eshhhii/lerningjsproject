@@ -1,4 +1,5 @@
 import { popupForm } from "./constants.js";
+import FormValidator from "./FormValidator.js";
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
@@ -18,18 +19,14 @@ export default class PopupWithForm extends Popup {
     }
 
 setEventListeners(){
-    popupForm.addEventListener('submit', evt => {
+    popupForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    this._handleFormSubmit(this._getInputValues())
+    this._handleFormSubmit(this._getInputValues());
 })
 super.setEventListeners()
 }
 
 close(){
-    
-        this._inputList.forEach((element) => {
-            element.value = "";
-        });
         super.close();
     }
 }

@@ -5,8 +5,8 @@ export default class PopupWithImage extends Popup{
     constructor(popupSelector){
         super(popupSelector);
     }
-    open({link, name}) {
-        const imagePopup = this._popup.querySelector('.popup__image')
+    open({name, link}) {
+        popupImageName.textContent = name;
         popupImageCard.src = link;
         popupImageName.alt = name;
 

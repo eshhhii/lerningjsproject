@@ -2,7 +2,7 @@ import { templateElement} from "./constants.js";
 
 
 export default class Card {
-    constructor(name, link,_handleCardClick, cardSelector) {
+    constructor(name, link, cardSelector, handleCardClick) {
         this._title = name;
         this._link = link;
         this._handleCardClick = handleCardClick;
@@ -16,10 +16,10 @@ export default class Card {
     }
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
-        this._element.querySelector(".element__title").textContent = this._name;
+        this.setEventListeners(); //с подчеркиванием
+        this._element.querySelector(".element__title").textContent = this._title;
         this._element.querySelector(".element__image").src = this._link;
-        this._element.querySelector(".element__image").alt = this._name;
+        this._element.querySelector(".element__image").alt = this._title;
 
         return this._element;
     }
@@ -31,10 +31,9 @@ export default class Card {
         this._element.querySelector(".element__like").addEventListener("click", () => {
             this._likeCard();
         });
-        this._element.querySelector(".element__image").addEventListener("click", () => this._handleCardClick({
-      name: this._title,
-      link: this._link
-    }));
+        this._element.querySelector(".element__image").addEventListener("click", () => {
+            this._handleCardClick();
+        });
         }
 
     _likeCard() {
@@ -44,11 +43,5 @@ export default class Card {
     _deleteCard() {
         this._element.remove();
     }
-    /*
-    _showCard() {
-        showImagePopup({name: this._title, link: this._link, alt: this._title});
-        /*
-        openPopup(popupImage);
-        open(imagePopup);
-}*/
+ 
 }
