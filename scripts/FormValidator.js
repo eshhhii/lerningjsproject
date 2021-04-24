@@ -61,6 +61,11 @@ export default class FormValidator {
             element.value = "";
         });
     }
+    disableSubmitButton() {
+        const submitButton = this._formElement.querySelector(this._submitButtonSelector);
+        submitButton.classList.add("popup__save_disabled");
+            
+    }
 
     _setInputListeners() {
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));

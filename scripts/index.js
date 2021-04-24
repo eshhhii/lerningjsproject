@@ -41,18 +41,24 @@ imagePopup.setEventListeners();
 
 const userInfo = new UserInfo(userNameSelector, userJobSelector);
 
-
+/*
 const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
     const item = {name: values.name, job: values.job};
     userInfoPopup.setUserInfo(values);
     userInfo.close();
+});*/
+const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
+    const item = {name: values.name, job: values.job};
+    userInfo.setUserInfo(values);
+    userInfoPopup.close();
 });
 userInfoPopup.setEventListeners();
 
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
     const item = {name: values.name, link: values.link};
     const newElement = createCard(item);
-    newElement
+    newElement.addItem();
+    newElement.setUserInfo(values);
     newCardPopup.close();
     });
     newCardPopup.setEventListeners();
@@ -61,6 +67,7 @@ function createCard(name, link, templateElement) {
     const card = new Card(name, link, templateElement);
     return card.generateCard();
 }
+
 
 
 const cardList = new Section({
@@ -101,6 +108,7 @@ userFormValidator.enableValidation();
 const cardFormValidator = new FormValidator(validationConfig, addCard);
 cardFormValidator.removeFormErrorContainer();
 cardFormValidator.removeInputValue();
+cardFormValidator.disableSubmitButton();
 cardFormValidator.enableValidation();
  
 
@@ -114,8 +122,25 @@ cardFormValidator.enableValidation();
         const newCardPopupSaveBtn = document.querySelector('.popup__save');
         newCardPopupSaveBtn.classList.add("popup__save_disabled");
     }*/
- 
+ /*function createCard(name, link, templateElement) {
+    const card = new Card(name, link, templateElement);
+    return card.generateCard();
+  };
 
+  function renderCard (name, link, container, toEnd) {
+    const card = createCard(name, link);
+    const method = toEnd ? 'append' : 'prepend';
+    container[method](card);
+  }
+  function submitAddCardForm(evt) {
+    evt.preventDefault();
+    renderCard(inputName.value, inputPlace.value, container);
+    removeInputValue(popupAdd);
+
+    closePopup(popupAdd);
+}
+
+addCard.addEventListener("submit", submitAddCardForm);*/
 
 
 
@@ -189,19 +214,9 @@ function submitEditProfileForm(evt) {
 }
 
 formEditProfile.addEventListener("submit", submitEditProfileForm);
-/*
+*/
 
 
-  
-/*
-function submitAddCardForm(evt) {
-    evt.preventDefault();
-    renderCard(inputName.value, inputPlace.value, container);
-    removeInputValue(popupAdd);
 
-    closePopup(popupAdd);
-}
-
-addCard.addEventListener("submit", submitAddCardForm);*/
 
 
