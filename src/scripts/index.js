@@ -1,6 +1,7 @@
 import { initialCards } from "./initial-cards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import '../pages/index.css';
 import Popup from "./Popup.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
