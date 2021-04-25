@@ -1,4 +1,4 @@
-export function openPopup(popup) {
+/*export function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", escClosePopup);
 }
@@ -13,8 +13,8 @@ export const escClosePopup = function (evt) {
     if (evt.key === "Escape") {
         closePopup(openedPopup);
     }
-}
-
+}*/
+/*
 export function removeFormErrorContainer(popup) {
     const formErrors = popup.querySelectorAll(".popup__error");
     formErrors.forEach((error) => {
@@ -31,4 +31,4 @@ export function removeInputValue(popup) {
     valueInput.forEach((element) => {
         element.value = "";
     });
-}
+}*/
