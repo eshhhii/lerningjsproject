@@ -16,7 +16,7 @@ export default class Card {
     }
     generateCard() {
         this._element = this._getTemplate();
-        this.setEventListeners(); //с подчеркиванием
+        this.setEventListeners();
         this._element.querySelector(".element__title").textContent = this._title;
         this._element.querySelector(".element__image").src = this._link;
         this._element.querySelector(".element__image").alt = this._title;

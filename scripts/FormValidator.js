@@ -55,12 +55,8 @@ export default class FormValidator {
             error.classList.remove(this._inputErrorClass);
         });
     }
-    removeInputValue(){
-        const valueInput = this._formElement.querySelectorAll(".popup__input");
-        valueInput.forEach((element) => {
-            element.value = "";
-        });
-    }
+ 
+
     disableSubmitButton() {
         const submitButton = this._formElement.querySelector(this._submitButtonSelector);
         submitButton.classList.add("popup__save_disabled");

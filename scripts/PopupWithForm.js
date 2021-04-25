@@ -17,9 +17,14 @@ export default class PopupWithForm extends Popup {
         });
         return this._newValues;
     }
-
+    removeInputValue(){
+        const valueInput = this._popupForm.querySelectorAll(".popup__input");
+        valueInput.forEach((element) => {
+            element.value = "";
+        });
+    }
 setEventListeners(){
-    popupForm.addEventListener('submit', (evt) => {
+    this._popupForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     this._handleFormSubmit(this._getInputValues());
 })
@@ -28,6 +33,7 @@ super.setEventListeners()
 
 close(){
         super.close();
+        this.removeInputValue();
     }
 }
 
