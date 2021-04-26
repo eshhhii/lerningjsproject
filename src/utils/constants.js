@@ -12,8 +12,6 @@ export const jobInput = document.querySelector("#userjob");
 export const containerSelector = ".elements__list";
 export const popupForm = document.querySelector(".popup__form");
 export const addCard = document.querySelector("#popupFormAdd");
-export const popupImageName = document.querySelector(".popup__title_image");
-export const popupImageCard = document.querySelector(".popup__image");
 export const templateElement = document.querySelector(".template");
 export const validationConfig = {
     formSelector: ".popup__form",

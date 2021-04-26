@@ -15,12 +15,7 @@ export default class PopupWithForm extends Popup {
         });
         return this._newValues;
     }
-    removeInputValue(){
-        const valueInput = this._popupForm.querySelectorAll(".popup__input");
-        valueInput.forEach((element) => {
-            element.value = "";
-        });
-    }
+   
 setEventListeners(){
     this._popupForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -31,7 +26,7 @@ super.setEventListeners()
 
 close(){
         super.close();
-        this.removeInputValue();
+        this._popupForm.reset();
     }
 }
 

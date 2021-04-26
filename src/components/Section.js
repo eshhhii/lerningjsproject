@@ -2,13 +2,13 @@ export default class Section {
     constructor({items, renderer}, containerSelector){
         this._items = items;
         this._renderer = renderer;
-        this._containerSelector = document.querySelector(containerSelector);
+        this._container = document.querySelector(containerSelector);
         
     }
 
 addItem(element, toEnd) {
     const method = toEnd ? 'append' : 'prepend';  
-    this._containerSelector[method](element);
+    this._container[method](element);
       
 }
 renderer() {

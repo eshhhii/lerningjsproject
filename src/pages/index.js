@@ -1,12 +1,12 @@
-import { initialCards } from "./initial-cards.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import { initialCards } from "../utils/initial-cards.js";
+import Card from "../components/Card";
+import FormValidator from "../components/FormValidator";
 import '../pages/index.css';
-import Popup from "./Popup.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from './UserInfo.js';
-import Section from './Section.js';
+import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
 import {
     showUserInfoPopup,
     closePopupButton,
@@ -24,7 +24,7 @@ import {
     validationConfig,
     nameInput,
     jobInput,
-} from "./constants.js";
+} from "../utils/constants.js";
 
 const imagePopup = new PopupWithImage(popupImageSelector);
 imagePopup.setEventListeners();
@@ -44,6 +44,7 @@ const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
     const newCard = newElement.generateCard();
     cardList.addItem(newCard);
     newCardPopup.close();
+    cardFormValidator.disableSubmitButton();
     });
     newCardPopup.setEventListeners();
 
@@ -64,22 +65,23 @@ const cardList = new Section({
 cardList.renderer();
 
 showNewCardPopup.addEventListener('click', () => {
+    cardFormValidator.removeFormErrorContainer();
     newCardPopup.open();
 });
 
 showUserInfoPopup.addEventListener('click', () => {
+    userFormValidator.removeFormErrorContainer;
     const allUserInfo = userInfo.getUserInfo();
     nameInput.value = allUserInfo.name;
     jobInput.value = allUserInfo.job;
+    userFormValidator.removeFormErrorContainer();
     userInfoPopup.open();
 });
 
 const userFormValidator = new FormValidator(validationConfig, popupForm);
-userFormValidator.removeFormErrorContainer;
 userFormValidator.enableValidation();
 
 const cardFormValidator = new FormValidator(validationConfig, addCard);
-cardFormValidator.removeFormErrorContainer();
 cardFormValidator.disableSubmitButton();
 cardFormValidator.enableValidation();
 

@@ -1,16 +1,13 @@
-import { templateElement} from "./constants.js";
-
-
 export default class Card {
     constructor(name, link, cardSelector, handleCardClick) {
         this._title = name;
         this._link = link;
         this._handleCardClick = handleCardClick;
-        this._cardSelector = cardSelector;
+        this._card = cardSelector;
     }
 
     _getTemplate() {
-        const newCard = templateElement.content.querySelector(".element").cloneNode(true);
+        const newCard = this._card.content.querySelector(".element").cloneNode(true);
 
         return newCard;
     }
