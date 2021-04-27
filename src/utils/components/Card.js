@@ -4,9 +4,8 @@ export default class Card {
         this._link = link;
         this._handleCardClick = handleCardClick;
         this._card = cardSelector;
-        this._element = this._getTemplate();
-        this._imageCard = this._element.querySelector(".element__image"); 
-        this._like = this._element.querySelector(".element__like"); 
+        this._imageCard = this._element.querySelector(".element__image"); //переделала
+        this._like = this._element.querySelector(".element__like"); //переделала
     }
 
     _getTemplate() {
@@ -15,6 +14,7 @@ export default class Card {
         return newCard;
     }
     generateCard() {
+        this._element = this._getTemplate();
         this.setEventListeners();
         this._element.querySelector(".element__title").textContent = this._title;
         this._imageCard.src = this._link;
