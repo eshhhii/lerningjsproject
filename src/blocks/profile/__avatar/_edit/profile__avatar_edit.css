@@ -1,0 +1,8 @@
+.profile__avatar_edit{
+    background-image: url(../../../../images/pencil.svg);
+    height: 26px;
+    min-width: 26px;
+    border-radius: 0px;
+    background-color: transparent;
+    position: absolute;
+}
