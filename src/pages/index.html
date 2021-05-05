@@ -17,7 +17,9 @@
             <section class="profile">
                 <div class="profile__info">
                     <img src="<%=require('./images/image.jpg')%>" class="profile__avatar" alt="Аватар">
+                    <div class="profile__button">
                     <button type="button" class="profile__avatar_edit" aria-label="Изменить аватар"></button>
+                </div>
                     <div class="profile__text">
                         <div class="profile__user">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -100,8 +102,9 @@
             <button class="element__bin" aria-label="Удалить"></button>
             <div class="element__text">
                 <p class="element__title"></p>
+                <div class="element__like-counter">
                 <button class="element__like" aria-label="Лайкнуть"></button>
-                <span class="element__like_counter">0</span>
+                <span class="element__counter">0</span>
             </div>
         </li>
     </template>
