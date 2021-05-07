@@ -40,7 +40,13 @@ export default class Card {
     }
 
     _deleteCard() {
-        this._element.remove();
+        this._api._deleteCard(this._id)
+        .then(()=>{
+            this._element.remove();
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     }
 
 }
