@@ -1,4 +1,4 @@
-.element__like-counter{
+.element__container{
     display: flex;
     flex-direction: column;
 }
