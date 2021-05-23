@@ -21,7 +21,6 @@ export const containerSelector = ".elements__list";
 export const popupForm = document.querySelector(".popup__form");
 export const addCard = document.querySelector("#popupFormAdd");
 export const popupFormAvatar = document.querySelector("#popupFormAvatar");
-
 export const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",

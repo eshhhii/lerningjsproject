@@ -9,6 +9,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
+import Api from "../components/Api.js";
 import {
   showUserInfoPopup,
   showNewCardPopup,
@@ -83,6 +84,16 @@ const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
   newCardPopup.close();
 });
 newCardPopup.setEventListeners();
+/*
+const userPicPopup = new PopupWithForm(popupUserPicSelector, () => {
+
+});
+userPicPopup.setEventListeners();
+
+const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, () => {
+
+});
+deleteCardPopup.setEventListeners();*/
 
 const userPicPopup = new PopupWithForm(popupUserPicSelector, (values) => {
   const item = { link: values.link };
@@ -121,6 +132,18 @@ const cardList = new Section(
 /*
 cardList.renderer();*/
 
+const api = new Api({
+  url: "https://mesto.nomoreparties.co/v1/cohort-23",
+  headers: {
+    Authorization: "aaeefd51-5fdb-4127-96af-d3773d3eb60b",
+    "content-type": "application/json",
+  },
+});
+
+api.getInitialCards().then((data) => {
+  cardList.renderer(data);
+});
+
 showNewCardPopup.addEventListener("click", () => {
   cardFormValidator.removeFormErrorContainer();
   cardFormValidator.disableSubmitButton();
@@ -134,6 +157,15 @@ showUserInfoPopup.addEventListener("click", () => {
   userFormValidator.removeFormErrorContainer();
   userInfoPopup.open();
 });
+/*
+showUserPicPopup.addEventListener("click", () => {
+    avatarFormValidator.removeFormErrorContainer();
+    userPicPopup.open();
+});
+
+showDeleteCardPopup.addEventListener("click", () => {
+    deleteCardPopup.open();
+});*/
 
 showUserPicPopup.addEventListener("click", () => {
   avatarFormValidator.removeFormErrorContainer();
