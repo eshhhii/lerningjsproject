@@ -75,23 +75,36 @@ const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
       userInfoPopup.close();
     })
     .finally(() => {
-      renderLoading(false);
+      userInfoPopup.rendererLoading(false);
     })
     .catch((err) => {
       console.log(err);
     });
 });
 userInfoPopup.setEventListeners();
-
+/*
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
   newCardPopup.rendererLoading(true);
-  const item = { name: values.name, link: values.link };
   const newElement = createCard(item.name, item.link, templateElement);
   const newCard = newElement.generateCard();
   cardList.addItem(newCard);
   newCardPopup.close();
 });
-newCardPopup.setEventListeners();
+newCardPopup.setEventListeners();*/
+
+const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
+  api
+    .addCard(values.name, values.link)
+    .then((item) => {
+      const newElement = createCard(item, templateElement, api);
+      const newCard = newElement.generateCard();
+      cardList.addItem(newCard);
+      newCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 /*
 const userPicPopup = new PopupWithForm(popupUserPicSelector, () => {
 
@@ -104,11 +117,15 @@ const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, () => {
 deleteCardPopup.setEventListeners();*/
 
 const userPicPopup = new PopupWithForm(popupUserPicSelector, (values) => {
+  userPicPopup.rendererLoading(true);
   api
-    .editUserAvatar(values.avatar)
+    .editUserAvatar(values["link-avatar"])
     .then(() => {
-      userInfo.setAvatar(values.avatar);
+      userInfo.setAvatar(values["link-avatar"]);
       userPicPopup.close();
+    })
+    .finally(() => {
+      userPicPopup.rendererLoading(false);
     })
     .catch((err) => {
       console.log(err);
@@ -147,12 +164,22 @@ api
     console.log(err);
   });*/
 
-function createCard(name, link, templateElement) {
-  const card = new Card(name, link, templateElement, {
-    handleCardClick: (name, link) => {
-      imagePopup.open({ name, link });
+function createCard(item, userId, templateElement) {
+  const card = new Card(
+    item,
+    userId,
+    templateElement,
+    {
+      handleCardClick: (name, link) => {
+        imagePopup.open(name, link);
+      },
+      handleCardLike: () => {},
+      handleCardDelete: () => {
+        deleteCardPopup.open();
+      },
     },
-  });
+    item._id
+  );
   return card;
 }
 
@@ -160,7 +187,7 @@ const cardList = new Section(
   {
     /*items: initialCards,*/
     renderer: (item) => {
-      const card = createCard(item.name, item.link, templateElement);
+      const card = createCard(item, userId, templateElement);
       const cardView = card.generateCard();
       cardList.addItem(cardView, true);
     },
@@ -179,13 +206,14 @@ showNewCardPopup.addEventListener("click", () => {
 showUserInfoPopup.addEventListener("click", () => {
   const allUserInfo = userInfo.getUserInfo();
   nameInput.value = allUserInfo.name;
-  jobInput.value = allUserInfo.job;
+  jobInput.value = allUserInfo.about;
   userFormValidator.removeFormErrorContainer();
   userInfoPopup.open();
 });
 
 showUserPicPopup.addEventListener("click", () => {
   avatarFormValidator.removeFormErrorContainer();
+  avatarFormValidator.disableSubmitButton();
   userPicPopup.open();
 });
 /*
