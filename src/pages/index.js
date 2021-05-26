@@ -40,6 +40,37 @@ const api = new Api({
     "content-type": "application/json",
   },
 });
+
+function createCard(item, userId, templateElement) {
+  const card = new Card(
+    item,
+    userId,
+    templateElement,
+    {
+      handleCardClick: (name, link) => {
+        imagePopup.open({ name, link });
+      },
+      handleCardLike: () => {},
+      handleCardDelete: () => {
+        deleteCardPopup.open();
+      },
+    },
+    item._id
+  );
+  return card;
+}
+
+const cardList = new Section(
+  {
+    /*items: initialCards,*/
+    renderer: (item) => {
+      const card = createCard(item, userId, templateElement);
+      const cardView = card.generateCard();
+      cardList.addItem(cardView, true);
+    },
+  },
+  containerSelector
+);
 /*
 api.getInitialCards().then((res) => {
   cardList.renderItems(res);
@@ -93,18 +124,24 @@ const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
 newCardPopup.setEventListeners();*/
 
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
+  newCardPopup.rendererLoading(true);
   api
     .addCard(values.name, values.link)
     .then((item) => {
-      const newElement = createCard(item, templateElement, api);
+      const newElement = createCard(item, userId, templateElement);
       const newCard = newElement.generateCard();
       cardList.addItem(newCard);
       newCardPopup.close();
+    })
+    .finally(() => {
+      newCardPopup.rendererLoading(false);
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
+newCardPopup.setEventListeners();
 /*
 const userPicPopup = new PopupWithForm(popupUserPicSelector, () => {
 
@@ -133,12 +170,17 @@ const userPicPopup = new PopupWithForm(popupUserPicSelector, (values) => {
 });
 userPicPopup.setEventListeners();
 
-const deleteCardPopup = new PopupWithSubmit(
-  popupDeleteCardSelector,
-  (evt, card) => {
-    evt.preventDefault(card);
-  }
-);
+const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, (card) => {
+  api
+    .deleteCard(card.getIdCard())
+    .then(() => {
+      card.removeCard();
+      deleteCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 deleteCardPopup.setEventListeners();
 
 api
@@ -164,36 +206,6 @@ api
     console.log(err);
   });*/
 
-function createCard(item, userId, templateElement) {
-  const card = new Card(
-    item,
-    userId,
-    templateElement,
-    {
-      handleCardClick: (name, link) => {
-        imagePopup.open(name, link);
-      },
-      handleCardLike: () => {},
-      handleCardDelete: () => {
-        deleteCardPopup.open();
-      },
-    },
-    item._id
-  );
-  return card;
-}
-
-const cardList = new Section(
-  {
-    /*items: initialCards,*/
-    renderer: (item) => {
-      const card = createCard(item, userId, templateElement);
-      const cardView = card.generateCard();
-      cardList.addItem(cardView, true);
-    },
-  },
-  containerSelector
-);
 /*
 cardList.renderer();*/
 
@@ -216,10 +228,6 @@ showUserPicPopup.addEventListener("click", () => {
   avatarFormValidator.disableSubmitButton();
   userPicPopup.open();
 });
-/*
-showDeleteCardPopup.addEventListener("click", () => {
-  deleteCardPopup.open();
-});*/
 
 const userFormValidator = new FormValidator(validationConfig, popupForm);
 userFormValidator.enableValidation();

@@ -67,4 +67,13 @@ export default class Api {
       return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
     });
   }
+
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
+    });
+  }
 }

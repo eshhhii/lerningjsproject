@@ -43,6 +43,7 @@ export default class Card {
     if (this._ownerId !== this._userId) {
       this._bin.remove();
     }
+
     this.setEventListeners();
     return this._element;
   }
@@ -61,7 +62,7 @@ export default class Card {
       this._handleCardClick();
     });
   }
-  //получить ид карточки
+
   getIdCard() {
     return this._cardId;
   }
