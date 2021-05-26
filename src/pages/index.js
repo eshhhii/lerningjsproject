@@ -9,7 +9,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import Api from "../components/Api.js";
 import {
   showUserInfoPopup,
   showNewCardPopup,
@@ -50,33 +49,42 @@ api.getUserInfo().then((res) => {
   console.log(res);
   userId = res;
 });*/
-
-api
-  .getAllData()
-  .then((args) => {
-    const [dataUserInfo, dataCards] = args;
-    userInfo.setUserInfo(dataUserInfo.name, dataUserInfo.about);
-    userInfo.setAvatar(dataUserInfo.avatar);
-    userId = dataUserInfo._id;
-    cardList.renderItems(dataCards);
-  })
-  .catch((data) => {
-    console.log(data);
-  });
-
 const imagePopup = new PopupWithImage(popupImageSelector);
 imagePopup.setEventListeners();
 
-const userInfo = new UserInfo(userNameSelector, userJobSelector);
-
+const userInfo = new UserInfo(
+  userNameSelector,
+  userJobSelector,
+  userAvatarSelector
+);
+/*
 const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
+  userInfoPopup.rendererLoading(true);
   const item = { name: values.name, about: values.job };
   userInfo.setUserInfo(item.name, item.about);
   userInfoPopup.close();
 });
+userInfoPopup.setEventListeners();*/
+
+const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
+  userInfoPopup.rendererLoading(true);
+  api
+    .editUserInfo(values.name, values.about)
+    .then(() => {
+      userInfo.setUserInfo(values.name, values.about);
+      userInfoPopup.close();
+    })
+    .finally(() => {
+      renderLoading(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 userInfoPopup.setEventListeners();
 
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
+  newCardPopup.rendererLoading(true);
   const item = { name: values.name, link: values.link };
   const newElement = createCard(item.name, item.link, templateElement);
   const newCard = newElement.generateCard();
@@ -96,8 +104,15 @@ const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, () => {
 deleteCardPopup.setEventListeners();*/
 
 const userPicPopup = new PopupWithForm(popupUserPicSelector, (values) => {
-  const item = { link: values.link };
-  userPicPopup.close();
+  api
+    .editUserAvatar(values.avatar)
+    .then(() => {
+      userInfo.setAvatar(values.avatar);
+      userPicPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 userPicPopup.setEventListeners();
 
@@ -108,6 +123,29 @@ const deleteCardPopup = new PopupWithSubmit(
   }
 );
 deleteCardPopup.setEventListeners();
+
+api
+  .getAllData()
+  .then((arg) => {
+    const [dataUserInfo, dataCards] = arg;
+    userInfo.setUserInfo(dataUserInfo.name, dataUserInfo.about);
+    userInfo.setAvatar(dataUserInfo.avatar);
+    userId = dataUserInfo._id;
+    cardList.renderItems(dataCards);
+  })
+  .catch((data) => {
+    console.log(data);
+  });
+/*
+api
+  .editUserInfo()
+  .then((values) => {
+    userInfo.setUserInfo(values.name, values.job);
+    userInfoPopup.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });*/
 
 function createCard(name, link, templateElement) {
   const card = new Card(name, link, templateElement, {
@@ -132,18 +170,6 @@ const cardList = new Section(
 /*
 cardList.renderer();*/
 
-const api = new Api({
-  url: "https://mesto.nomoreparties.co/v1/cohort-23",
-  headers: {
-    Authorization: "aaeefd51-5fdb-4127-96af-d3773d3eb60b",
-    "content-type": "application/json",
-  },
-});
-
-api.getInitialCards().then((data) => {
-  cardList.renderer(data);
-});
-
 showNewCardPopup.addEventListener("click", () => {
   cardFormValidator.removeFormErrorContainer();
   cardFormValidator.disableSubmitButton();
@@ -157,15 +183,6 @@ showUserInfoPopup.addEventListener("click", () => {
   userFormValidator.removeFormErrorContainer();
   userInfoPopup.open();
 });
-/*
-showUserPicPopup.addEventListener("click", () => {
-    avatarFormValidator.removeFormErrorContainer();
-    userPicPopup.open();
-});
-
-showDeleteCardPopup.addEventListener("click", () => {
-    deleteCardPopup.open();
-});*/
 
 showUserPicPopup.addEventListener("click", () => {
   avatarFormValidator.removeFormErrorContainer();

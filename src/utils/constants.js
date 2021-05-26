@@ -14,7 +14,6 @@ export const showDeleteCardPopup = document.querySelector(".element__bin");*/
 export const userNameSelector = ".profile__name";
 export const userJobSelector = ".profile__job";
 export const userAvatarSelector = ".profile__avatar";
-console.log(userAvatarSelector);
 export const nameInput = document.querySelector("#username");
 export const jobInput = document.querySelector("#userjob");
 export const containerSelector = ".elements__list";

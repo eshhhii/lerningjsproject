@@ -29,4 +29,29 @@ export default class Api {
       return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
     });
   }
+
+  editUserInfo(name, about) {
+    return fetch(`${this._url}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about,
+      }),
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
+    });
+  }
+
+  editUserAvatar(url) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: url,
+      }),
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
+    });
+  }
 }
