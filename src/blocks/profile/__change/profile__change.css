@@ -1,5 +1,5 @@
-.profile__edit_avatar {
-  background-image: url(../../../../images/pencil.svg);
+.profile__change {
+  background-image: url(../../../images/pencil.svg);
   height: 26px;
   min-width: 26px;
   border-radius: 0px;
@@ -11,6 +11,6 @@
   display: none;
 }
 
-.profile__edit_avatar:hover {
+.profile__change:hover {
   cursor: pointer;
 }
