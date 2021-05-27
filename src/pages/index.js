@@ -83,15 +83,7 @@ const cardList = new Section(
   },
   containerSelector
 );
-/*
-api.getInitialCards().then((res) => {
-  cardList.renderItems(res);
-});
 
-api.getUserInfo().then((res) => {
-  console.log(res);
-  userId = res;
-});*/
 const imagePopup = new PopupWithImage(popupImageSelector);
 imagePopup.setEventListeners();
 
@@ -100,14 +92,6 @@ const userInfo = new UserInfo(
   userJobSelector,
   userAvatarSelector
 );
-/*
-const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
-  userInfoPopup.rendererLoading(true);
-  const item = { name: values.name, about: values.job };
-  userInfo.setUserInfo(item.name, item.about);
-  userInfoPopup.close();
-});
-userInfoPopup.setEventListeners();*/
 
 const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
   userInfoPopup.rendererLoading(true);
@@ -125,15 +109,6 @@ const userInfoPopup = new PopupWithForm(userInfoPopupSelector, (values) => {
     });
 });
 userInfoPopup.setEventListeners();
-/*
-const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
-  newCardPopup.rendererLoading(true);
-  const newElement = createCard(item.name, item.link, templateElement);
-  const newCard = newElement.generateCard();
-  cardList.addItem(newCard);
-  newCardPopup.close();
-});
-newCardPopup.setEventListeners();*/
 
 const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
   newCardPopup.rendererLoading(true);
@@ -154,16 +129,6 @@ const newCardPopup = new PopupWithForm(newCardPopupSelector, (values) => {
 });
 
 newCardPopup.setEventListeners();
-/*
-const userPicPopup = new PopupWithForm(popupUserPicSelector, () => {
-
-});
-userPicPopup.setEventListeners();
-
-const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, () => {
-
-});
-deleteCardPopup.setEventListeners();*/
 
 const userPicPopup = new PopupWithForm(popupUserPicSelector, (values) => {
   userPicPopup.rendererLoading(true);
@@ -207,19 +172,6 @@ api
   .catch((data) => {
     console.log(data);
   });
-/*
-api
-  .editUserInfo()
-  .then((values) => {
-    userInfo.setUserInfo(values.name, values.job);
-    userInfoPopup.close();
-  })
-  .catch((err) => {
-    console.log(err);
-  });*/
-
-/*
-cardList.renderer();*/
 
 showNewCardPopup.addEventListener("click", () => {
   cardFormValidator.removeFormErrorContainer();

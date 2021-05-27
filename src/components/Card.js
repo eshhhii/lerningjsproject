@@ -9,7 +9,7 @@ export default class Card {
     this._title = item.name;
     this._link = item.link;
     this._ownerId = item.owner._id;
-    this._likeCard = item.likeCard;
+    this._likeCard = item.likes;
 
     this._userId = userId;
     this._card = cardSelector;
