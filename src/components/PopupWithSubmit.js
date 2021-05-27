@@ -6,10 +6,7 @@ export default class PopupWithSubmit extends Popup {
     this._handleSubmitCallback = handleSubmitCallback;
     this._popupForm = this._popup.querySelector(".popup__form");
   }
-  /*
-  setSubmitAction(submit) {
-    this._handleSubmitCallback = submit;
-  }*/
+
   setEventListeners() {
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();

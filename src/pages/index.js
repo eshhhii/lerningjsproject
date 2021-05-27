@@ -28,7 +28,6 @@ import {
   popupUserPicSelector,
   popupDeleteCardSelector,
   showUserPicPopup,
-  /*showDeleteCardPopup,*/
   popupFormAvatar,
 } from "../utils/constants.js";
 let userId;
@@ -58,14 +57,14 @@ function createCard(item, userId, templateElement) {
         resultOfLike
           .then((data) => {
             card.setLikes(data.likes);
-            card.renderLikes();
+            card.rendererLikes();
           })
           .catch((err) => {
             console.log(err);
           });
       },
       handleCardDelete: () => {
-        deleteCardPopup.open();
+        deleteCardPopup.open(card);
       },
     },
     item._id

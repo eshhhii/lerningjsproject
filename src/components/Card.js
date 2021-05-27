@@ -32,9 +32,7 @@ export default class Card {
 
     return newCard;
   }
-  //проверяю по id кому устанавливать корзину
 
-  //создаю карточку
   generateCard() {
     this._element.querySelector(".element__title").textContent = this._title;
     this._imageCard.src = this._link;
@@ -45,10 +43,10 @@ export default class Card {
     }
 
     this.setEventListeners();
+    this.rendererLikes();
     return this._element;
   }
 
-  //установила слушатели
   setEventListeners() {
     this._bin.addEventListener("click", () => {
       this._handleCardDelete();
@@ -65,7 +63,7 @@ export default class Card {
     return this._cardId;
   }
 
-  // Определяем есть ли совпадения в массиве лайков
+  // Определяем есть ли совпадения в массиве лайков по id
   isLiked() {
     return this._likeCard.some((element) => {
       return element._id === this._userId;
@@ -73,13 +71,13 @@ export default class Card {
   }
 
   // Отрисовать лайки
-  updateLikes() {
+  rendererLikes() {
     this._likeCounter.textContent = this._likeCard.length;
-    this.renderLikes(this._userId);
+    this.changeLikes(this._userId);
   }
 
   // Изменение состояния лайка
-  renderLikes() {
+  changeLikes() {
     if (this.isLiked(this._userId)) {
       this._like.classList.add("element__like_active");
     } else {
@@ -90,7 +88,6 @@ export default class Card {
   // Установка кол-ва лайков
   setLikes(likeList) {
     this._likeCard = likeList;
-    this.updateLikes();
   }
 
   // Удалить карточку
