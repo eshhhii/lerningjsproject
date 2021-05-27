@@ -47,10 +47,23 @@ function createCard(item, userId, templateElement) {
     userId,
     templateElement,
     {
-      handleCardClick: (name, link) => {
-        imagePopup.open({ name, link });
+      handleCardClick: () => {
+        imagePopup.open(item.name, item.link);
       },
-      handleCardLike: () => {},
+      handleCardLike: () => {
+        const likedCard = card.isLiked();
+        const resultOfLike = likedCard
+          ? api.deleteLike(card.getIdCard())
+          : api.likeCard(card.getIdCard());
+        resultOfLike
+          .then((data) => {
+            card.setLikes(data.likes);
+            card.renderLikes();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
       handleCardDelete: () => {
         deleteCardPopup.open();
       },
@@ -62,7 +75,6 @@ function createCard(item, userId, templateElement) {
 
 const cardList = new Section(
   {
-    /*items: initialCards,*/
     renderer: (item) => {
       const card = createCard(item, userId, templateElement);
       const cardView = card.generateCard();

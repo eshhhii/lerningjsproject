@@ -8,10 +8,10 @@ export default class Card {
   ) {
     this._title = item.name;
     this._link = item.link;
-    this._ownerId = item.ownerId;
-    this._likes = item.likes;
+    this._ownerId = item.owner._id;
+    this._likeCard = item.likeCard;
 
-    this.userId = userId;
+    this._userId = userId;
     this._card = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleCardLike = handleCardLike;
@@ -50,11 +50,9 @@ export default class Card {
 
   //установила слушатели
   setEventListeners() {
-    this._element
-      .querySelector(".element__bin")
-      .addEventListener("click", () => {
-        this._handleCardDelete();
-      });
+    this._bin.addEventListener("click", () => {
+      this._handleCardDelete();
+    });
     this._like.addEventListener("click", () => {
       this._handleCardLike();
     });
@@ -69,20 +67,20 @@ export default class Card {
 
   // Определяем есть ли совпадения в массиве лайков
   isLiked() {
-    return this._likes.some((element) => {
+    return this._likeCard.some((element) => {
       return element._id === this._userId;
     });
   }
 
   // Отрисовать лайки
-  _updateLikes() {
-    this._likes.textContent = this._likeCounter.length;
+  updateLikes() {
+    this._likeCounter.textContent = this._likeCard.length;
     this.renderLikes(this._userId);
   }
 
   // Изменение состояния лайка
   renderLikes() {
-    if (this.isLiked() === true) {
+    if (this.isLiked(this._userId)) {
       this._like.classList.add("element__like_active");
     } else {
       this._like.classList.remove("element__like_active");
@@ -91,8 +89,8 @@ export default class Card {
 
   // Установка кол-ва лайков
   setLikes(likeList) {
-    this._likes = likeList;
-    this._updateLikes();
+    this._likeCard = likeList;
+    this.updateLikes();
   }
 
   // Удалить карточку
@@ -100,53 +98,3 @@ export default class Card {
     this._bin.closest(".element").remove();
   }
 }
-
-/*export default class Card {
-  constructor(name, link, cardSelector, { handleCardClick }) {
-    this._title = name;
-    this._link = link;
-    this._handleCardClick = handleCardClick;
-    this._card = cardSelector;
-    this._element = this._getTemplate();
-    this._imageCard = this._element.querySelector(".element__image");
-    this._like = this._element.querySelector(".element__like");
-  }
-
-  _getTemplate() {
-    const newCard = this._card.content
-      .querySelector(".element")
-      .cloneNode(true);
-
-    return newCard;
-  }
-  generateCard() {
-    this.setEventListeners();
-    this._element.querySelector(".element__title").textContent = this._title;
-    this._imageCard.src = this._link;
-    this._imageCard.alt = this._title;
-
-    return this._element;
-  }
-
-  setEventListeners() {
-    this._element
-      .querySelector(".element__bin")
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
-    this._like.addEventListener("click", () => {
-      this._handleLikeCard();
-    });
-    this._imageCard.addEventListener("click", () => {
-      this._handleCardClick(this._title, this._link);
-    });
-  }
-
-  _handleLikeCard() {
-    this._like.classList.toggle("element__like_active");
-  }
-
-  _handleDeleteCard() {
-    this._element.remove();
-  }
-}*/

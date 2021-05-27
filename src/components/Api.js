@@ -14,10 +14,6 @@ export default class Api {
       headers: this._headers,
     }).then((res) => {
       return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
-      /*if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка! ${res.status}`);*/
     });
   }
 
@@ -70,6 +66,24 @@ export default class Api {
 
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
+    });
+  }
+
+  likeCard(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
+    });
+  }
+
+  deleteLike(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
