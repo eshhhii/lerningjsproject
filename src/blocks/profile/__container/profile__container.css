@@ -13,7 +13,7 @@
   transition: 0.3s;
 }
 
-.profile__container:hover .profile__avatar_edit {
+.profile__container:hover .profile__edit_avatar {
   display: block;
 }
 
