@@ -4,7 +4,7 @@ export default class Card {
     userId,
     cardSelector,
     { handleCardClick, handleCardLike, handleCardDelete },
-    cardId
+    id
   ) {
     this._title = item.name;
     this._link = item.link;
@@ -16,7 +16,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleCardLike = handleCardLike;
     this._handleCardDelete = handleCardDelete;
-    this._cardId = cardId;
+    this._id = id;
 
     this._element = this._getTemplate();
     this._imageCard = this._element.querySelector(".element__image");
@@ -59,24 +59,21 @@ export default class Card {
     });
   }
 
-  getIdCard() {
-    return this._cardId;
+  getId() {
+    return this._id;
   }
 
-  // Определяем есть ли совпадения в массиве лайков по id
   isLiked() {
     return this._likeCard.some((element) => {
       return element._id === this._userId;
     });
   }
 
-  // Отрисовать лайки
   rendererLikes() {
     this._likeCounter.textContent = this._likeCard.length;
     this.changeLikes(this._userId);
   }
 
-  // Изменение состояния лайка
   changeLikes() {
     if (this.isLiked(this._userId)) {
       this._like.classList.add("element__like_active");
@@ -85,12 +82,10 @@ export default class Card {
     }
   }
 
-  // Установка кол-ва лайков
   setLikes(likeList) {
     this._likeCard = likeList;
   }
 
-  // Удалить карточку
   removeCard() {
     this._bin.closest(".element").remove();
   }

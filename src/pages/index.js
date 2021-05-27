@@ -52,8 +52,8 @@ function createCard(item, userId, templateElement) {
       handleCardLike: () => {
         const likedCard = card.isLiked();
         const resultOfLike = likedCard
-          ? api.deleteLike(card.getIdCard())
-          : api.likeCard(card.getIdCard());
+          ? api.deleteLike(card.getId())
+          : api.likeCard(card.getId());
         resultOfLike
           .then((data) => {
             card.setLikes(data.likes);
@@ -148,7 +148,7 @@ userPicPopup.setEventListeners();
 
 const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, (card) => {
   api
-    .deleteCard(card.getIdCard())
+    .deleteCard(card.getId())
     .then(() => {
       card.removeCard();
       deleteCardPopup.close();
