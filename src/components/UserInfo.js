@@ -4,13 +4,6 @@ export default class UserInfo {
     this._userJob = document.querySelector(userJobSelector);
     this._avatar = document.querySelector(userAvatarSelector);
   }
-  /*
-  getUserInfo() {
-    this._userInfo = {};
-    this._userInfo.name = this._userName.textContent;
-    this._userInfo.job = this._userJob.textContent;
-    return this._userInfo;
-  }*/
 
   getUserInfo() {
     const userData = {

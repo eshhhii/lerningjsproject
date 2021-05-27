@@ -8,12 +8,6 @@ export default class Section {
     const method = toEnd ? "append" : "prepend";
     this._container[method](element);
   }
-  /*
-    renderer() {
-        this._items.forEach(item => {
-            this._renderer(item)
-        });
-    }*/
 
   renderItems(arr) {
     arr.forEach((item) => {
