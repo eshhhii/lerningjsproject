@@ -1,4 +1,4 @@
-Проектная работа: Mesto https://eshhhii.github.io/mesto/
+Проектная работа: Mesto  https://eshhhii.github.io/mesto
 
 Описание:
 Проект, созданный для изучения основ Java Script
