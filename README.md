@@ -1,4 +1,4 @@
-<b>Проектная работа</b>: Mesto  https://eshhhii.github.io/lerningjsproject/
+<b>Проектная работа</b>: Mesto  https://eshhhii.github.io/mesto/
 
 <b>Описание</b>:
 Проект, созданный для изучения основ Java Script
